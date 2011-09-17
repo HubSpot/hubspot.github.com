@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HubSpot Tool Chest</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Le styles -->
+
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css">
+    <style type="text/css">
+      span.label.notice {vertical-align: top; }
+      .footer {
+          -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.024) inset;
+          background-color: #EEEEEE;
+          border-top: 1px solid #E5E5E5;
+          min-width: 940px;
+          padding: 30px 0;
+          text-shadow: 0 1px 0 #FFFFFF;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+
+      <div class="sidebar">
+        <div class="well">
+          <h5>HubSpot Tool Chest</h5>
+          <ul>
+            <li><a href="#python">Python</a></li>
+            <li><a href="#ruby">Ruby</a></li>
+            <li><a href="#uiux">UI/UX</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="hero-unit">
+          <h1>HubSpot Tool Chest</h1>
+          <p>A directory of all the public tools you might use to help you build your HubSpot integrations.<br />Let us know about your tools and we'll add them here.</p>
+        </div>
+
+        <section>
+          <div class="page-header">
+            <h1>Python</h1>
+          </div>
+          <div class="row">
+            <div class="span8">
+              <h6>API Wrappers</h6>
+              <ul>
+                <li>
+                  <h4>pyspot</h4>
+                  <p>
+                    A wrapper for all the current available HubSpot APIs: Leads, Events, Lead Nurturing, Blog (more coming soon).  This is actively maintained and used by internal HubSpot developers.
+                    <br />
+                    <a href="https://github.com/adrianmott/pyspot">adrianmott/pyspot</a>
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="span8">
+              <h6>Django Helpers</h6>
+              <ul>
+                <li>
+                  <h4>hubspot-marketplace-django</h4>
+                  <p>
+                    A couple useful django middlewares.  One middleware that takes care of all the work of authenticating marketplace requests on your server.  Another middleware that mocks out most of the marketplace functionality to ease local development of your marketplace apps.  These are actively maintained and used by internal HubSpot developers.
+                    <br />
+                    <a href="https://github.com/prior/hubspot-marketplace-django">prior/hubspot-marketplace-django</a>
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="ruby">
+          <div class="page-header">
+            <h1>Ruby</h1>
+          </div>
+          <div class="row">
+            <div class="span8">
+              <h6>API Wrappers</h6>
+              <ul>
+                <li>
+                  <h4>rHAPI</h4>
+                  <p>
+                    A wrapper for the leads API.
+                    <br />
+                    <a href="https://github.com/timstephenson/rHAPI">timstehpenson/rHAPI</a></h5>
+                  </p>
+                </li>
+                <li>
+                  <h4>hubspot-api</h4>
+                  <p>
+                    A wrapper for the blog API.
+                    <br />
+                    <a href="https://github.com/timstephenson/rHAPI">lanej/hubspot-api</a>
+                  </p>
+                </li>
+                <li>
+                  <h4>active-resource-wrapper <span class="label notice">Wanted</span></h4>
+                  <p>
+                    A way to make active-resource work with HubSpot's API, and do so for all the APIs.  This has not been developed, but there's a definite need-- let us know if you end up doing something here!
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="span8">
+              <h6>Rails Helpers</h6>
+              <ul>
+                <li>
+                  <h4>marketplace-authentication-rack <span class="label notice">Wanted</span></h4>
+                  <p>
+                    A rack middleware to do marketplace authentication for you, could work very simliar to how the hubspot-marketplace-django works.  This has not been developed, but there's a definite need-- let us know if you end up doing something here!
+                  </p>
+                </li>
+                <li>
+                  <h4>marketplace-mock-rack <span class="label notice">Wanted</span></h4>
+                  <p>
+                    A rack middleware to mock out the marketplace to enable rapid local development.  This has not been developed, but there's a definite need-- let us know if you end up doing something here!
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="uiux">
+          <div class="page-header">
+            <h1>UI/UX</h1>
+          </div>
+          <div class="row">
+            <div class="span8">
+              <h6>CSS Toolkit</h6>
+              <ul>
+                <li>
+                  <h4>hubspot-marketplace-bootstrap</h4>
+                  <p>
+                    A sandboxed version of twitter bootstrap so you may use twitter bootstrap inside your marketplace apps!  Make your apps looks good with little to no css/js effort.
+                    <br />
+                    <a href="https://github.com/prior/hubspot-marketplace-bootstrap">prior/hubspot-marketplace-bootstrap</a></h5>
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>
+          Let us know about your new libraries and we'll add them to the list, and feel free to contribute to the already existing tools!
+        </p>
+      </div>
+    </footer>
+
+  </body>
+</html>

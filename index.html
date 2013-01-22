@@ -13,9 +13,7 @@
 
       // Put custom repo URL's in this object, keyed by repo name.
       var repoUrls = {
-        "bootstrap": "http://twitter.github.com/bootstrap/",
-        "finagle": "http://twitter.github.com/finagle/",
-        "hogan.js": "http://twitter.github.com/hogan.js/"
+        "jQuery Zoomer": "http://hubspot.github.com/jquery-zoomer/"
       };
 
       function repoUrl(repo) {
@@ -24,8 +22,7 @@
 
       // Put custom repo descriptions in this object, keyed by repo name.
       var repoDescriptions = {
-        "bootstrap": "An HTML, CSS, and JS toolkit designed to kickstart development of webapps and sites",
-        "naggati2": "A protocol builder for Netty using Scala 2.8"
+        "jQuery Zoomer": "Zoom up your iFrames",
       };
 
       function repoDescription(repo) {
@@ -67,7 +64,7 @@
         repos = repos || [];
         page = page || 1;
 
-        var uri = "https://api.github.com/orgs/twitter/repos?callback=?"
+        var uri = "https://api.github.com/orgs/HubSpot/repos?callback=?"
                 + "&per_page=100"
                 + "&page="+page;
 
@@ -123,7 +120,7 @@
       }
       addRepos();
 
-      $.getJSON("https://api.github.com/orgs/twitter/members?callback=?", function (result) {
+      $.getJSON("https://api.github.com/orgs/HubSpot/members?callback=?", function (result) {
         var members = result.data;
 
         $(function () {

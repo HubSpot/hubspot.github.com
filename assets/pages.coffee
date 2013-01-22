@@ -1,7 +1,7 @@
 (($) ->
 
     apiUrl = (path) ->
-        api_base = "https://git.hubteam.com/api/v3/"
+        api_base = "https://api.github.com/"
         oauth_string = "d677063ec69bf71c781dd86e214c9c5f6919e96a"
 
         if isLocal()
@@ -20,7 +20,7 @@
         repoDescriptions[repo.name] or repo.description
 
     repoHomepage = (groupName) ->
-        "https://git.hubteam.com/pages/HubSpot/hubspot-pages/#{groupName}"
+        "https://github.com/HubSpot/hubspot.github.com/#{groupName}"
 
     getRepoGroup = (repo) ->
         hashes = twttr.txt.extractHashtags repo.description

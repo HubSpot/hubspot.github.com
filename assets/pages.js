@@ -4,7 +4,7 @@
     var $flyzone, addContributor, addRecentlyUpdatedRepo, addRepo, addRepoGroup, apiUrl, buildingRepos, chooseHMFICType, flyzone, getRepoGroup, isLocal, makeHMFIC, makeRandomHMFIC, match, n, randomItem, randomOpacity, repoDescription, repoDescriptions, repoGroups, repoHomepage, repoUrl, repoUrls, sizeDimensions, sizes;
     apiUrl = function(path) {
       var api_base, oauth_string, paths;
-      api_base = "https://git.hubteam.com/api/v3/";
+      api_base = "https://api.github.com/";
       oauth_string = "d677063ec69bf71c781dd86e214c9c5f6919e96a";
       if (isLocal()) {
         paths = path.split("/");
@@ -22,7 +22,7 @@
       return repoDescriptions[repo.name] || repo.description;
     };
     repoHomepage = function(groupName) {
-      return "https://git.hubteam.com/pages/HubSpot/hubspot-pages/" + groupName;
+      return "https://github.com/HubSpot/hubspot.github.com/" + groupName;
     };
     getRepoGroup = function(repo) {
       var hashes, _ref;

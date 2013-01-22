@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>HubSpot+Github</title>
+        <link href='assets/reset.css' type='text/css' rel='stylesheet' />
+        <link href='assets/grid.css' type='text/css' rel='stylesheet' />
+        <link href='assets/style.css' type='text/css' rel='stylesheet' />
+        <script src='assets/jquery-1.7.1.min.js' type='text/javascript'></script>
+        <script src='assets/strftime.js' type='text/javascript'></script>
+        <script src='assets/twitter-text.js' type='text/javascript'></script>
+        <script src='assets/pages.js' type='text/javascript'></script>
+    </head>
+    <body>
+        <div id='wrapper' class='grid clearfix'>
+            <div class='grid-1'>
+                <div id='main'>
+                    <div id='logo'>
+                        <h1>
+                            HubSpot+Github
+                        </h1>
+                    </div>
+                    <p>
+                        Visit
+                        <a href='https://git.hubteam.com'>git.hubteam.com</a>
+                    </p>
+                </div>
+            </div>
+            <div class='grid grid-3'>
+                <div id='statistics' class='grid-1 alpha header'>
+                    <h1>
+                        Statistics
+                    </h1>
+                    <p>
+                        <a href='https://git.hubteam.com/HubSpot/repositories'>
+                            <span id='num_repos'>&nbsp;</span>
+                            public repos
+                        </a>
+                        <br />
+                        <a href='https://git.hubteam.com/HubSpot'>
+                            <span id='num_members'>&nbsp;</span>
+                            members
+                        </a>
+                    </p>
+                    <p class='email'>
+                        <a href='mailto:devteam@hubspot.com'>
+                            devteam@hubspot.com
+                        </a>
+                    </p>
+                </div>
+                <div id='recently_updated' class='grid-2 omega header'>
+                    <h1>
+                        Recently updated
+                        <a href='https://git.hubteam.com/HubSpot/repositories'>View All on GitHub</a>
+                    </h1>
+                    <ol id='recently_updated_repos'></ol>
+                </div>
+            </div>
+            <div id='repo_groups'>
+                <ol id='tagged_groups'></ol>
+                <div id='homeless'>
+                    <h2>
+                        These Projects Are Homeless
+                    </h2>
+                    <p>
+                        Want to adopt a homeless project? Add a
+                        <strong>hashtag</strong>
+                        with your team's name to your repo (e.g. #social)
+                    </p>
+                </div>
+                <ol id='untagged_groups'></ol>
+            </div>
+        </div>
+    </body>
+</html>

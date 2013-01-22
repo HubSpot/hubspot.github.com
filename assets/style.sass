@@ -1,0 +1,402 @@
+@import compass/css3
+// @import animation
+
+html
+    background: url("bg.png") repeat
+
+body
+    font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif
+    line-height: 1.4
+    color: #666
+    min-width: 960px
+
+h1
+    font-weight: bold
+    font-size: 20px
+    color: #333
+
+h2
+    font-weight: bold
+    font-size: 20px
+    color: #0084b4
+
+a
+    &:link, &:visited
+        color: #0084b4
+        text-decoration: none
+    &:hover
+        text-decoration: underline
+
+strong
+    font-weight: bold
+
+.label
+    background-color: #cd90b6
+    +border-radius(3px)
+    color: #FFF
+    font-size: 10px
+    font-weight: bold
+    padding: 1px 3px 2px
+    text-transform: uppercase
+
+    &.javascript
+        background-color: #333
+    &.scala
+        background-color: #7ac9de
+    &.ruby
+        background-color: #cc1100
+    &.java
+        background-color: #cc8300
+    &.python
+        background-color: #6aad2d
+
+.base_box_styles
+    background: white
+    background: rgba(255, 255, 255, 0.7)
+    +box-shadow(0px 0px 5px 1px rgba(0, 0, 0, 0.1))
+    margin-bottom: 20px
+
+.repo_box_styles
+    @extend .base_box_styles
+
+    #untagged_groups &
+        height: 155px
+        overflow: hidden
+        padding-bottom: 15px
+
+    > a
+        display: block
+        width: 100%
+        overflow: hidden
+        text-decoration: none
+        color: inherit
+
+        &:hover
+            background: #efefef
+            background: rgba(0, 0, 0, 0.05)
+
+    h2, h3, p
+        margin: 10px 15px
+
+    h2
+        margin-bottom: 2px
+        max-width: 160px
+        overflow: hidden
+
+    h3
+        font-size: 11px
+        margin-top: 2px
+        margin-bottom: 15px
+        color: #999
+
+#wrapper
+    position: relative
+    width: 960px
+    margin: 0 auto
+    padding: 20px 0
+
+#main
+    height: 130px
+    text-align: center
+    background: white
+    background: rgba(255, 255, 255, 0.7)
+    +box-shadow(0px 0px 5px 1px rgba(0, 0, 0, 0.1))
+    margin-bottom: 20px
+
+    h1
+        margin: 30px 0
+        margin-left: 15px
+        margin-right: 15px
+    p
+        margin-left: 15px
+        margin-right: 15px
+        font-size: 11px
+        line-height: 2
+
+
+#logo
+    width: 190px
+    height: 64px
+    margin: 0 auto
+    background: url("logo.png") no-repeat center center
+    text-indent: -99999px
+    h1
+        margin: 0
+
+div.header
+    @extend .base_box_styles
+
+    height: 130px
+
+    h1, p
+        margin: 10px 15px 0
+
+    h1
+        margin-bottom: 10px
+
+#num_repos, #num_members
+    font-size: 14px
+    font-weight: bold
+    color: #0084b4
+    line-height: 15px
+
+#statistics
+    a
+        &:link, &:visited
+            color: inherit
+    p.email
+        margin-top: 6px
+        font-size: 11px
+
+#recently_updated h1 a
+    font-weight: normal
+    font-size: 11px
+
+#recently_updated_repos
+    margin-left: 15px
+    li
+        line-height: 1.5
+        span
+            display: inline-block
+            padding: 0 1px
+            font-size: 11px
+            &.name
+                padding: 0 6px 0 0
+                font-size: 13px
+            &.time a, &.watchers a, &.forks a
+                color: #999
+
+#homeless
+    display: none
+    margin: 20px 10px
+
+    h2
+        font-size: 30px
+        color: #333
+        text-align: center
+
+    p
+        font-size: 14px
+        text-align: center
+
+.repo_group
+    @extend .repo_box_styles
+
+    h2
+        max-width: none
+
+    .contributors
+        margin: 0 15px
+
+        li
+            display: inline-block
+            margin: 0 10px 10px 0
+
+            img
+                width: 45px
+                +border-radius(3px)
+
+    .stats
+        margin: 0 15px
+
+        h3
+            margin: 0
+                bottom: 8px
+
+        .hottest
+            margin-bottom: 10px
+
+            li
+                margin-bottom: 4px
+
+.repo
+    @extend .repo_box_styles
+
+    > a
+        height: 100%
+
+    &:after
+        content: ''
+        position: absolute
+        right: 0
+        top: 0
+        width: 0
+        height: 0
+        border-bottom: 50px solid transparent
+        border-left: 50px solid transparent
+        border-right: 50px solid #0080b0
+        pointer-events: none
+    &.javascript:after
+        border-right-color: #333
+    &.scala:after
+        border-right-color: #7ac9de
+    &.ruby:after
+        border-right-color: #cc1100
+    &.java:after
+        border-right-color: #cc8300
+    &.python:after
+        border-right-color: #6aad2d
+
+@keyframes 'small-swing'
+    0%
+        margin-top: 0px
+    50%
+        margin-top: -10px
+    100%
+        margin-top: 0px
+
+
+@-moz-keyframes 'small-swing'
+    0%
+        margin-top: 0px
+    50%
+        margin-top: -10px
+    100%
+        margin-top: 0px
+
+
+@-webkit-keyframes 'small-swing'
+    0%
+        margin-top: 0px
+    50%
+        margin-top: -10px
+    100%
+        margin-top: 0px
+
+
+@-ms-keyframes 'small-swing'
+    0%
+        margin-top: 0px
+    50%
+        margin-top: -10px
+    100%
+        margin-top: 0px
+
+
+@keyframes 'medium-swing'
+    0%
+        margin-top: 0px
+    50%
+        margin-top: -20px
+    100%
+        margin-top: 0px
+
+
+@-moz-keyframes 'medium-swing'
+    0%
+        margin-top: 0px
+    50%
+        margin-top: -20px
+    100%
+        margin-top: 0px
+
+
+@-webkit-keyframes 'medium-swing'
+    0%
+        margin-top: 0px
+    50%
+        margin-top: -20px
+    100%
+        margin-top: 0px
+
+
+@-ms-keyframes 'medium-swing'
+    0%
+        margin-top: 0px
+    50%
+        margin-top: -20px
+    100%
+        margin-top: 0px
+
+
+@keyframes 'large-swing'
+    0%
+        margin-top: 0px
+    50%
+        margin-top: -40px
+    100%
+        margin-top: 0px
+
+
+@-moz-keyframes 'large-swing'
+    0%
+        margin-top: 0px
+    50%
+        margin-top: -40px
+    100%
+        margin-top: 0px
+
+
+@-webkit-keyframes 'large-swing'
+    0%
+        margin-top: 0px
+    50%
+        margin-top: -40px
+    100%
+        margin-top: 0px
+
+
+@-ms-keyframes 'large-swing'
+    0%
+        margin-top: 0px
+    50%
+        margin-top: -40px
+    100%
+        margin-top: 0px
+
+
+.larry
+    &.size_smaller, &.size_small
+        -webkit-animation: small-swing 0.5s infinite ease-in-out
+        -moz-animation: small-swing 0.5s infinite ease-in-out
+        -mz-animation: small-swing 0.5s infinite ease-in-out
+    &.size_medium, &.size_large
+        -webkit-animation: medium-swing 1.25s infinite ease-in-out
+        -moz-animation: medium-swing 1.25s infinite ease-in-out
+        -ms-animation: medium-swing 1.25s infinite ease-in-out
+    &.size_medium, &.size_fat
+        -webkit-animation: large-swing 1.5s infinite ease-in-out
+        -moz-animation: large-swing 1.5s infinite ease-in-out
+        -ms-animation: large-swing 1.5s infinite ease-in-out
+
+#flyzone
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    overflow: hidden
+
+@-webkit-keyframes 'flyin'
+    0%
+        opacity: 0
+        -webkit-transform: scale(0.5)
+
+    100%
+        opacity: 1
+        -webkit-transform: scale(1)
+
+@-moz-keyframes 'flyin'
+    0%
+        opacity: 0
+        -moz-transform: scale(0.5)
+
+    100%
+        opacity: 1
+        -moz-transform: scale(1)
+
+@-ms-keyframes 'flyin'
+    0%
+        opacity: 0
+        zoom: 0.5
+
+    100%
+        opacity: 1
+        zoom: 1
+
+.flyin
+    -webkit-perspective: 1000
+    -webkit-backface-visibility: hidden
+    -webkit-animation: flyin 0.7s
+    -moz-animation: flyin  0.7s
+    -ms-animation: flyin 0.7s

@@ -1,0 +1,26 @@
+[
+  {
+    "login": "jnagro",
+    "contributions": 111,
+    "url": "https://git.hubteam.com/api/v3/users/jnagro",
+    "gravatar_id": "052784952464f4849fb1eacfd97d9de5",
+    "avatar_url": "https://secure.gravatar.com/avatar/052784952464f4849fb1eacfd97d9de5?d=https://git.hubteam.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+    "id": 8
+  },
+  {
+    "login": "wsorenson",
+    "contributions": 4,
+    "url": "https://git.hubteam.com/api/v3/users/wsorenson",
+    "gravatar_id": "86980bf0875d2ac54e1ff407668f86c3",
+    "avatar_url": "https://secure.gravatar.com/avatar/86980bf0875d2ac54e1ff407668f86c3?d=https://git.hubteam.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+    "id": 17
+  },
+  {
+    "login": "jkolash",
+    "contributions": 3,
+    "url": "https://git.hubteam.com/api/v3/users/jkolash",
+    "gravatar_id": "523ec98f2c3835f25483c6d576f94f10",
+    "avatar_url": "https://secure.gravatar.com/avatar/523ec98f2c3835f25483c6d576f94f10?d=https://git.hubteam.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+    "id": 10
+  }
+]

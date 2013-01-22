@@ -1,0 +1,55 @@
+%html
+    %head
+        %title HubSpot+Github
+        %link{rel: "stylesheet", type: "text/css", href: "assets/reset.css"}
+        %link{rel: "stylesheet", type: "text/css", href: "assets/grid.css"}
+        %link{rel: "stylesheet", type: "text/css", href: "assets/style.css"}
+        %script{type: "text/javascript", src: "assets/jquery-1.7.1.min.js"}
+        %script{type: "text/javascript", src: "assets/strftime.js"}
+        %script{type: "text/javascript", src: "assets/twitter-text.js"}
+        %script{type: "text/javascript", src: "assets/pages.js"}
+    %body
+        #wrapper.grid.clearfix
+            .grid-1
+                #main
+                    #logo
+                        %h1
+                            HubSpot+Github
+                    %p
+                        Visit
+                        %a{href: "https://git.hubteam.com"} git.hubteam.com
+
+            .grid.grid-3
+                #statistics.grid-1.alpha.header
+                    %h1
+                        Statistics
+                    %p
+                        %a{href: "https://git.hubteam.com/HubSpot/repositories"}
+                            %span#num_repos &nbsp;
+                            public repos
+                        %br
+                        %a{href: "https://git.hubteam.com/HubSpot"}
+                            %span#num_members &nbsp;
+                            members
+                    %p.email
+                        %a{href: "mailto:devteam@hubspot.com"}
+                            devteam@hubspot.com
+
+                %div#recently_updated.grid-2.omega.header
+                    %h1
+                        Recently updated
+                        %a{href: "https://git.hubteam.com/HubSpot/repositories"} View All on GitHub
+                    %ol#recently_updated_repos
+
+            #repo_groups
+                %ol#tagged_groups
+
+                #homeless
+                    %h2
+                        These Projects Are Homeless
+                    %p
+                        Want to adopt a homeless project? Add a
+                        %strong hashtag
+                        with your team's name to your repo (e.g. #social).
+
+                %ol#untagged_groups

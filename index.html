@@ -10,6 +10,12 @@
         <script type="text/javascript">
         (function ($, undefined) {
 
+            var auth =
+                location.hostname == 'hubspot.github.com' ?
+                    '&client_secret=e6076c603211e64d66d48c32cf280d94608ee3e1&client_id=5ee4cbe96c95a732e360' :
+                    '&client_secret=1c913440a7f4a217be521afa7e21524f76b99026&client_id=956ae3b51f999e57b020'
+            ;
+
             // Put custom repo URL's in this object, keyed by repo name.
             var repoUrls = {
                 "jquery-zoomer": "http://hubspot.github.com/jquery-zoomer/"
@@ -65,7 +71,8 @@
 
                 var uri = "https://api.github.com/orgs/HubSpot/repos?callback=?"
                                 + "&per_page=100"
-                                + "&page="+page;
+                                + "&page="+page
+                                + auth;
 
                 $.getJSON(uri, function (result) {
                     if (result.data && result.data.length > 0) {
@@ -119,10 +126,10 @@
             }
             addRepos();
 
-            $.getJSON("https://api.github.com/orgs/HubSpot/members?callback=?", function (result) {
+            $.getJSON("https://api.github.com/orgs/HubSpot/members?callback=?" + auth, function (result) {
                 var members = result.data;
 
-                $(function () {
+                $(function(){
                     $("#num-members").text(members.length);
                 });
             });

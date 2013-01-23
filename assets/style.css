@@ -72,6 +72,9 @@ li.repo {
 
 li.repo.selected {
     background: #e0e0e0;
+            box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+       -moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 #statistics, #recently-updated {

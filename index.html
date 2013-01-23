@@ -1,162 +1,163 @@
 <!DOCTYPE html>
-
 <html>
-  <head>
-    <title>Twitter &hearts; Open Source</title>
-    <link rel="stylesheet" type="text/css" href="assets/reset.css">
-    <link rel="stylesheet" type="text/css" href="assets/grid.css">
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
-    <script type="text/javascript" src="assets/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="assets/strftime.js"></script>
-    <script type="text/javascript">
-    (function ($, undefined) {
+    <head>
+        <title>Twitter &hearts; Open Source</title>
+        <link rel="stylesheet" type="text/css" href="assets/reset.css">
+        <link rel="stylesheet" type="text/css" href="assets/grid.css">
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
+        <script type="text/javascript" src="assets/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="assets/strftime.js"></script>
+        <script type="text/javascript">
+        (function ($, undefined) {
 
-      // Put custom repo URL's in this object, keyed by repo name.
-      var repoUrls = {
-        "jquery-zoomer": "http://hubspot.github.com/jquery-zoomer/"
-      };
+            // Put custom repo URL's in this object, keyed by repo name.
+            var repoUrls = {
+                "jquery-zoomer": "http://hubspot.github.com/jquery-zoomer/"
+            };
 
-      function repoUrl(repo) {
-        return repoUrls[repo.name] || repo.html_url;
-      }
+            function repoUrl(repo) {
+                return repoUrls[repo.name] || repo.html_url;
+            }
 
-      // Put custom repo descriptions in this object, keyed by repo name.
-      var repoDescriptions = {
-        "jquery-zoomer": "Zoom up your iFrames",
-      };
+            // Put custom repo descriptions in this object, keyed by repo name.
+            var repoDescriptions = {
+                "jquery-zoomer": "Zoom up your iFrames",
+            };
 
-      function repoDescription(repo) {
-        return repoDescriptions[repo.name] || repo.description;
-      }
+            function repoDescription(repo) {
+                return repoDescriptions[repo.name] || repo.description;
+            }
 
-      function addRecentlyUpdatedRepo(repo) {
-        var $item = $("<li>");
+            function addRecentlyUpdatedRepo(repo) {
+                var $item = $("<li>");
 
-        var $name = $("<a>").attr("href", repo.html_url).text(repo.name);
-        $item.append($("<span>").addClass("name").append($name));
+                var $name = $("<a>").attr("href", repo.html_url).text(repo.name);
+                $item.append($("<span>").addClass("name").append($name));
 
-        var $time = $("<a>").attr("href", repo.html_url + "/commits").text(strftime("%h %e, %Y", repo.pushed_at));
-        $item.append($("<span>").addClass("time").append($time));
+                var $time = $("<a>").attr("href", repo.html_url + "/commits").text(strftime("%h %e, %Y", repo.pushed_at));
+                $item.append($("<span>").addClass("time").append($time));
 
-        $item.append('<span class="bullet">&sdot;</span>');
+                $item.append('<span class="bullet">&sdot;</span>');
 
-        var $watchers = $("<a>").attr("href", repo.html_url + "/watchers").text(repo.watchers + " stargazers");
-        $item.append($("<span>").addClass("watchers").append($watchers));
+                var $watchers = $("<a>").attr("href", repo.html_url + "/watchers").text(repo.watchers + " stargazers");
+                $item.append($("<span>").addClass("watchers").append($watchers));
 
-        $item.append('<span class="bullet">&sdot;</span>');
+                $item.append('<span class="bullet">&sdot;</span>');
 
-        var $forks = $("<a>").attr("href", repo.html_url + "/network").text(repo.forks + " forks");
-        $item.append($("<span>").addClass("forks").append($forks));
+                var $forks = $("<a>").attr("href", repo.html_url + "/network").text(repo.forks + " forks");
+                $item.append($("<span>").addClass("forks").append($forks));
 
-        $item.appendTo("#recently-updated-repos");
-      }
+                $item.appendTo("#recently-updated-repos");
+            }
 
-      function addRepo(repo) {
-        var $item = $("<li>").addClass("repo grid-1 " + (repo.language || '').toLowerCase());
-        var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
-        $link.append($("<h2>").text(repo.name));
-        $link.append($("<h3>").text(repo.language));
-        $link.append($("<p>").text(repoDescription(repo)));
-        $item.appendTo("#repos");
-      }
+            function addRepo(repo) {
+                var $item = $("<li>").addClass("repo grid-1 " + (repo.language || '').toLowerCase());
+                var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
+                $link.append($("<h2>").text(repo.name));
+                $link.append($("<h3>").text(repo.language));
+                $link.append($("<p>").text(repoDescription(repo)));
+                $item.appendTo("#repos");
+            }
 
-      function addRepos(repos, page) {
-        repos = repos || [];
-        page = page || 1;
+            function addRepos(repos, page) {
+                repos = repos || [];
+                page = page || 1;
 
-        var uri = "https://api.github.com/orgs/HubSpot/repos?callback=?"
-                + "&per_page=100"
-                + "&page="+page;
+                var uri = "https://api.github.com/orgs/HubSpot/repos?callback=?"
+                                + "&per_page=100"
+                                + "&page="+page;
 
-        $.getJSON(uri, function (result) {
-          if (result.data && result.data.length > 0) {
-            repos = repos.concat(result.data);
-            addRepos(repos, page + 1);
-          }
-          else {
-            $(function () {
-              $("#num-repos").text(repos.length);
+                $.getJSON(uri, function (result) {
+                    if (result.data && result.data.length > 0) {
+                        repos = repos.concat(result.data);
+                        addRepos(repos, page + 1);
+                    }
+                    else {
+                        $(function () {
+                            $("#num-repos").text(repos.length);
 
-              // Convert pushed_at to Date.
-              $.each(repos, function (i, repo) {
-                repo.pushed_at = new Date(repo.pushed_at);
+                            // Convert pushed_at to Date.
+                            $.each(repos, function (i, repo) {
+                                repo.pushed_at = new Date(repo.pushed_at);
 
-                var weekHalfLife  = 1.146 * Math.pow(10, -9);
+                                var weekHalfLife  = 1.146 * Math.pow(10, -9);
 
-                var pushDelta    = (new Date) - Date.parse(repo.pushed_at);
-                var createdDelta = (new Date) - Date.parse(repo.created_at);
+                                var pushDelta    = (new Date) - Date.parse(repo.pushed_at);
+                                var createdDelta = (new Date) - Date.parse(repo.created_at);
 
-                var weightForPush = 1;
-                var weightForWatchers = 1.314 * Math.pow(10, 7);
+                                var weightForPush = 1;
+                                var weightForWatchers = 1.314 * Math.pow(10, 7);
 
-                repo.hotness = weightForPush * Math.pow(Math.E, -1 * weekHalfLife * pushDelta);
-                repo.hotness += weightForWatchers * repo.watchers / createdDelta;
-              });
+                                repo.hotness = weightForPush * Math.pow(Math.E, -1 * weekHalfLife * pushDelta);
+                                repo.hotness += weightForWatchers * repo.watchers / createdDelta;
+                            });
 
-              // Sort by highest # of watchers.
-              repos.sort(function (a, b) {
-                if (a.hotness < b.hotness) return 1;
-                if (b.hotness < a.hotness) return -1;
-                return 0;
-              });
+                            // Sort by highest # of watchers.
+                            repos.sort(function (a, b) {
+                                if (a.hotness < b.hotness) return 1;
+                                if (b.hotness < a.hotness) return -1;
+                                return 0;
+                            });
 
-              $.each(repos, function (i, repo) {
-                addRepo(repo);
-              });
+                            $.each(repos, function (i, repo) {
+                                addRepo(repo);
+                            });
 
-              // Sort by most-recently pushed to.
-              repos.sort(function (a, b) {
-                if (a.pushed_at < b.pushed_at) return 1;
-                if (b.pushed_at < a.pushed_at) return -1;
-                return 0;
-              });
+                            // Sort by most-recently pushed to.
+                            repos.sort(function (a, b) {
+                                if (a.pushed_at < b.pushed_at) return 1;
+                                if (b.pushed_at < a.pushed_at) return -1;
+                                return 0;
+                            });
 
-              $.each(repos.slice(0, 3), function (i, repo) {
-                addRecentlyUpdatedRepo(repo);
-              });
+                            $.each(repos.slice(0, 3), function (i, repo) {
+                                addRecentlyUpdatedRepo(repo);
+                            });
+                        });
+                    }
+                });
+            }
+            addRepos();
+
+            $.getJSON("https://api.github.com/orgs/HubSpot/members?callback=?", function (result) {
+                var members = result.data;
+
+                $(function () {
+                    $("#num-members").text(members.length);
+                });
             });
-          }
-        });
-      }
-      addRepos();
 
-      $.getJSON("https://api.github.com/orgs/HubSpot/members?callback=?", function (result) {
-        var members = result.data;
+        })(jQuery);
+        </script>
+    </head>
+    <body>
+        <div id="wrapper" class="grid clearfix">
+            <div id="main" class="grid-1">
+                <div id="logo"><h1>HubSpot Open Source</h1></div>
+                <p>
+                    HubSpot is built on open source software.
+                    <a href="https://dev.hubspot.com.com/jobs">Want to help?</a>
+                </p>
+            </div>
 
-        $(function () {
-          $("#num-members").text(members.length);
-        });
-      });
+            <div class="grid grid-3">
+                <div id="statistics" class="grid-1 alpha header">
+                    <h1>Statistics</h1>
+                    <p>
+                        <a href="https://github.com/twitter/repositories"><span id="num-repos">Loading...</span> public repos</a>
+                        <br>
+                        <a href="https://github.com/twitter"><span id="num-members">Loading...</span> members</a>
+                    </p>
+                    <p class="email"><a href="mailto:dev@hubspot.com">dev@hubspot.com</a></p>
+                </div>
 
-    })(jQuery);
-    </script>
-  </head>
-  <body>
-    <div id="wrapper" class="grid clearfix">
-      <div id="main" class="grid-1">
-        <div id="logo"><h1>HubSpot Open Source</h1></div>
-        <h1>HubSpot is built on open source software.</h1>
-        <p>Want to help? <a href="https://dev.hubspot.com.com/jobs">Join the Flock</a></p>
-      </div>
+                <div id="recently-updated" class="grid-2 omega header">
+                    <h1>Recently updated <a href="https://github.com/twitter/repositories">View All on GitHub</a></h1>
+                    <ol id="recently-updated-repos"></ol>
+                </div>
+            </div>
 
-      <div class="grid grid-3">
-        <div id="statistics" class="grid-1 alpha header">
-          <h1>Statistics</h1>
-          <p>
-            <a href="https://github.com/twitter/repositories"><span id="num-repos">Loading...</span> public repos</a>
-            <br>
-            <a href="https://github.com/twitter"><span id="num-members">Loading...</span> members</a>
-          </p>
-          <p class="email"><a href="mailto:dev@hubspot.com">dev@hubspot.com</a></p>
+            <ol id="repos"></ol>
         </div>
-
-        <div id="recently-updated" class="grid-2 omega header">
-          <h1>Recently updated <a href="https://github.com/twitter/repositories">View All on GitHub</a></h1>
-          <ol id="recently-updated-repos"></ol>
-        </div>
-      </div>
-
-      <ol id="repos"></ol>
-    </div>
-  </body>
+    </body>
 </html>

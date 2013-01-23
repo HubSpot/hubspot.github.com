@@ -71,7 +71,7 @@ li.repo {
 }
 
 #statistics, #recently-updated {
-    width: 50%;
+    width: 540px;
     float: left;
     box-sizing: border-box;
     padding: 0px 0px 20px;

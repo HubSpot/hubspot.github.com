@@ -128,7 +128,16 @@
 
         $.getJSON(readmeURL, function (result) {
             markdown_contents = decode64(result.data.content.substr(0, result.data.content.length - 2));
-            contents = markdown.toHTML(markdown_contents);
+            marked.setOptions({
+                gfm: true,
+                tables: true,
+                breaks: false,
+                pedantic: false,
+                sanitize: true,
+                smartLists: true
+            });
+
+            contents = marked(markdown_contents);
             $('#selected-repo').html(contents).removeClass('hidden');
             window.scrollTo(0, 0);
         });

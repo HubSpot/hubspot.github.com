@@ -94,6 +94,7 @@
         $link.append($('<h2>').text(repo.name));
         $link.append($('<h3>').text(repo.language));
         $link.append($('<p>').text(repo.description));
+        $link.append('<div class="languange-indicator" title="' + repo.language + '"></div>');
         $item.appendTo('#repos');
     }
 

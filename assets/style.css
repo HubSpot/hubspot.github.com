@@ -1,5 +1,27 @@
-html {
-    background: url("bg.png") repeat;
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.grid .grid-cell {
+    width: 248px;
+    display:inline;
+    float: left;
+    position: relative;
+    margin-right: 29px;
+}
+
+.grid .grid-cell.grid-item-3 {
+    margin-right: 0px;
 }
 
 body {
@@ -18,37 +40,34 @@ h1 {
 h2 {
     font-weight: bold;
     font-size: 20px;
-    color: #0084b4;
-}
-
-a:link, a:visited {
-    color: #0084b4;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
 }
 
 #wrapper {
     position: relative;
-    width: 960px;
+    width: 1080px;
     margin: 0 auto;
     padding: 20px 0;
 }
 
 #main {
-    height: 400px;
     text-align: center;
+    margin: 20px auto;
 }
 
-#main, div.header, li.repo {
+li.repo, .top-section {
     background: white;
     background: rgba(255, 255, 255, 0.7);
     -moz-box-shadow:    0px 0px 5px 1px rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
     box-shadow:         0px 0px 5px 1px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+}
+
+#statistics, #recently-updated {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+    padding: 20px;
 }
 
 #main h1 {
@@ -77,6 +96,10 @@ a:hover {
     margin: 0;
 }
 
+#repos {
+    margin-bottom: 20px;
+}
+
 div.header {
     height: 130px;
 }
@@ -92,7 +115,6 @@ div.header h1 {
 #num-repos, #num-members {
     font-size: 14px;
     font-weight: bold;
-    color: #0084b4;
     line-height: 15px;
 }
 
@@ -108,10 +130,6 @@ div.header h1 {
 #recently-updated h1 a {
     font-weight: normal;
     font-size: 11px;
-}
-
-#recently-updated-repos {
-    margin-left: 15px;
 }
 
 #recently-updated-repos li {

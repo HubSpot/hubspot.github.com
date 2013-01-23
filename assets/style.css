@@ -234,7 +234,7 @@ li.repo h3 {
 }
 
 .repo.javascript .languange-indicator {
-    background-color: #333;
+    background-color: #888888;
 }
 
 .repo.scala .languange-indicator {
@@ -246,11 +246,15 @@ li.repo h3 {
 }
 
 .repo.java .languange-indicator {
-    background-color: #cc8300;
+    background-color: #fe7722;
 }
 
 .repo.python .languange-indicator {
     background-color: #6aad2d;
+}
+
+.repo.php .languange-indicator {
+    background-color: rgb(159, 96, 240);
 }
 
 .hero-unit {

@@ -1,3 +1,7 @@
+.markdown-region p {
+    margin-bottom: 1em;
+}
+
 .markdown-region h1,.markdown-region h2,.markdown-region h3,.markdown-region h4,.markdown-region h5,.markdown-region h6 {
     font-family: inherit;
     font-weight: 700;
@@ -38,6 +42,7 @@
 .markdown-region ul,.markdown-region ol {
     margin: 0 0 10px 25px;
     padding: 0;
+    list-style: disc;
 }
 
 .markdown-region ul.unstyled,.markdown-region ol.unstyled,.markdown-region ul.inline,.markdown-region ol.inline {

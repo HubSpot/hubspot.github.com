@@ -1,3 +1,7 @@
+body > .page {
+    min-width: 1080px;
+}
+
 .clearfix {
     *zoom: 1;
 }
@@ -28,13 +32,7 @@ body {
     font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.4;
     color: #666;
-    min-width: 960px;
-}
-
-h1 {
-    font-weight: bold;
-    font-size: 20px;
-    color: #333;
+    min-width: 1080px;
 }
 
 h2 {
@@ -54,20 +52,29 @@ h2 {
     margin: 20px auto;
 }
 
-li.repo, .top-section {
-    background: white;
-    background: rgba(255, 255, 255, 0.7);
-    -moz-box-shadow:    0px 0px 5px 1px rgba(0, 0, 0, 0.1);
-    -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
-    box-shadow:         0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+.top-section {
+    display: block;
     margin-bottom: 20px;
+    padding-top: 23px;
+    border-top: 1px solid #eee;
+}
+
+li.repo {
+    display: block;
+    background: #f6f6f6;
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.13), 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+       -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.13), 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.13), 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-shadow: 0px 1px #fff;
 }
 
 #statistics, #recently-updated {
     width: 50%;
     float: left;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 0px 0px 20px;
 }
 
 #main h1 {
@@ -112,24 +119,42 @@ div.header h1 {
     margin-bottom: 10px;
 }
 
-#num-repos, #num-members {
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 15px;
-}
-
 #statistics a:link, #statistics a:visited {
     color: inherit;
 }
 
-#statistics p.email {
-    margin-top: 6px;
-    font-size: 11px;
+#statistics .large-number {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 40px;
+    width: 250px;
+    margin-right: 18px;
+    padding-top: 20px;
+    flaot: left;
+    display: inline-block;
+    text-align: center;
+}
+
+#statistics .large-number:hover {
+    text-decoration: none;
+    color: #444;
+}
+
+#num-repos, #num-members {
+    font-size: 50px;
+    font-weight: normal;
+    line-height: 30px;
+    display: block;
+    text-align: center;
+}
+
+#recently-updated {
+    padding: 10px 0px 0px 30px;
+    font-size: 14px;
 }
 
 #recently-updated h1 a {
     font-weight: normal;
-    font-size: 11px;
 }
 
 #recently-updated-repos li {
@@ -142,12 +167,12 @@ div.header h1 {
 }
 
 #recently-updated-repos li span {
-    font-size: 11px;
+    font-size: 12px;
 }
 
 #recently-updated-repos li span.name {
     padding: 0 6px 0 0;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 #recently-updated-repos li span.time a,
@@ -202,6 +227,9 @@ li.repo h3 {
     border-left: 50px solid transparent;
     border-right: 50px solid #0080b0;
     pointer-events: none;
+            box-shadow: 0px -1px #e0e0e0, 1px 0px #e0e0e0;
+       -moz-box-shadow: 0px -1px #e0e0e0, 1px 0px #e0e0e0;
+    -webkit-box-shadow: 0px -1px #e0e0e0, 1px 0px #e0e0e0;
 }
 
 .repo.javascript:after {
@@ -222,4 +250,25 @@ li.repo h3 {
 
 .repo.python:after {
     border-right-color: #6aad2d;
+}
+
+.hero-unit {
+    margin: 40px auto 30px;
+}
+
+.hero-unit h1 {
+    display: block;
+    text-align: center;
+    font-size: 48px;
+    font-family: "Helvetica Neue", "HelveticaNeue-Light", "Helvetica Neue Light", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color: #455560;
+    text-shadow: none;
+}
+
+.hero-unit h2 {
+    display: block;
+    text-align: center;
+    font-size: 28px;
+    color: #888;
+    font-weight: 200;
 }

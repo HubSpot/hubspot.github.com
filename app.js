@@ -63,6 +63,16 @@
                         addRepo(repo, index);
                     });
 
+                    $repos = $('#repos li.repo');
+
+                    $('#repos li.repo > a').click(function(e){
+                        e.preventDefault();
+                        $link = $(this);
+                        $repos.removeClass('selected');
+                        $link.parent().addClass('selected');
+                        openRepo($link.data('repo_full_name'));
+                    });
+
                     // Sort by most-recently pushed to.
                     repos.sort(function (a, b) {
                         if (a.pushed_at < b.pushed_at) return 1;
@@ -102,13 +112,70 @@
 
     function addRepo(repo, index) {
         var $item = $('<li>').addClass('repo grid-cell grid-item-' + (index % 4) + ' ' + (repo.language || '').toLowerCase());
-        var $link = $('<a>').attr('href', repo.html_url).appendTo($item);
+        var $link = $('<a>').data('repo_full_name', repo.full_name).attr('href', repo.html_url).appendTo($item);
         $link.append($('<h2>').text(repo.name));
         $link.append($('<h3>').text(repo.language));
         $link.append($('<p>').text(repo.description));
         $link.append('<div class="languange-indicator" title="' + repo.language + '"></div>');
         $item.appendTo('#repos');
     }
+
+    function openRepo(repo_full_name) {
+        var readmeURL = 'https://api.github.com/repos/' + repo_full_name + '/readme?callback=?' + auth,
+            markdown_contents = '',
+            contents = ''
+        ;
+
+        $.getJSON(readmeURL, function (result) {
+            markdown_contents = decode64(result.data.content.substr(0, result.data.content.length - 2));
+            contents = markdown.toHTML(markdown_contents);
+            $('#selected-repo').html(contents).removeClass('hidden');
+            window.scrollTo(0, 0);
+        });
+    }
+
+    var keyStr = "ABCDEFGHIJKLMNOP" +
+       "QRSTUVWXYZabcdef" +
+       "ghijklmnopqrstuv" +
+       "wxyz0123456789+/" +
+       "=";
+
+
+    function decode64(input) {
+        var output = "";
+        var chr1, chr2, chr3 = "";
+        var enc1, enc2, enc3, enc4 = "";
+        var i = 0;
+
+        input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+
+        do {
+            enc1 = keyStr.indexOf(input.charAt(i++));
+            enc2 = keyStr.indexOf(input.charAt(i++));
+            enc3 = keyStr.indexOf(input.charAt(i++));
+            enc4 = keyStr.indexOf(input.charAt(i++));
+
+            chr1 = (enc1 << 2) | (enc2 >> 4);
+            chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+            chr3 = ((enc3 & 3) << 6) | enc4;
+
+            output = output + String.fromCharCode(chr1);
+
+            if (enc3 != 64) {
+            output = output + String.fromCharCode(chr2);
+            }
+            if (enc4 != 64) {
+            output = output + String.fromCharCode(chr3);
+            }
+
+            chr1 = chr2 = chr3 = "";
+            enc1 = enc2 = enc3 = enc4 = "";
+
+        } while (i < input.length);
+
+        return unescape(output);
+    }
+
 
     addRepos();
 

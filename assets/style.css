@@ -70,6 +70,10 @@ li.repo {
     text-shadow: 0px 1px #fff;
 }
 
+li.repo.selected {
+    background: #e0e0e0;
+}
+
 #statistics, #recently-updated {
     width: 540px;
     float: left;
@@ -276,4 +280,15 @@ li.repo h3 {
     font-size: 28px;
     color: #888;
     font-weight: 200;
+}
+
+#selected-repo {
+    padding: 20px;
+    background: #fcfcfc;
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.13), 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+       -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.13), 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.13), 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-shadow: 0px 1px #fff;
+    margin-bottom: 40px;
 }

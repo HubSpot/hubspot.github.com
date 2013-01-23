@@ -4,10 +4,11 @@
         <title>HubSpot &mdash; Open Source</title>
         <link type="text/css" rel="stylesheet" href="https://static2cdn.hubspot.com/style_guide/static-4.58/sass/style_guide_plus_layout.css">
         <link rel="stylesheet" type="text/css" href="assets/reset.css">
-        <link rel="stylesheet" type="text/css" href="assets/grid.css">
+        <link rel="stylesheet" type="text/css" href="assets/markdown.css">
         <link rel="stylesheet" type="text/css" href="assets/style.css">
         <link rel="icon" href="http://static.hubspot.com/favicon.ico">
         <script type="text/javascript" src="assets/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="assets/markdown.js"></script>
         <script type="text/javascript" src="assets/strftime.js"></script>
         <script type="text/javascript" src="app.js"></script>
     </head>
@@ -61,6 +62,8 @@
                     <ol id="recently-updated-repos"></ol>
                 </div>
             </div>
+
+            <div id="selected-repo" class="hidden markdown-region"></div>
 
             <ol id="repos" class="grid clearfix"></ol>
         </div>

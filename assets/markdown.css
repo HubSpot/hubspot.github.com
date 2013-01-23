@@ -1,0 +1,229 @@
+.markdown-region h1,.markdown-region h2,.markdown-region h3,.markdown-region h4,.markdown-region h5,.markdown-region h6 {
+    font-family: inherit;
+    font-weight: 700;
+    line-height: 20px;
+    color: inherit;
+    text-rendering: optimizelegibility;
+    margin: 10px 0;
+}
+
+.markdown-region h1 small,.markdown-region h2 small,.markdown-region h3 small,.markdown-region h4 small,.markdown-region h5 small,.markdown-region h6 small {
+    font-weight: 400;
+    line-height: 1;
+    color: #999;
+}
+
+.markdown-region h1,.markdown-region h2,.markdown-region h3 {
+    line-height: 40px;
+}
+
+.markdown-region h1 {
+    font-size: 38.5px;
+}
+
+.markdown-region h2 {
+    font-size: 31.5px;
+}
+
+.markdown-region h6 {
+    font-size: 11.9px;
+}
+
+.markdown-region .page-header {
+    padding-bottom: 9px;
+    border-bottom: 1px solid #eee;
+    margin: 20px 0 30px;
+}
+
+.markdown-region ul,.markdown-region ol {
+    margin: 0 0 10px 25px;
+    padding: 0;
+}
+
+.markdown-region ul.unstyled,.markdown-region ol.unstyled,.markdown-region ul.inline,.markdown-region ol.inline {
+    margin-left: 0;
+    list-style: none;
+}
+
+.markdown-region ul.inline > li,.markdown-region ol.inline > li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.markdown-region dt {
+    font-weight: 700;
+}
+
+.markdown-region dd {
+    margin-left: 10px;
+}
+
+.markdown-region .dl-horizontal {
+    zoom: 1;
+}
+
+.markdown-region .dl-horizontal:before {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.markdown-region .dl-horizontal:after {
+    display: table;
+    line-height: 0;
+    content: "";
+    clear: both;
+}
+
+.markdown-region .dl-horizontal dt {
+    float: left;
+    width: 160px;
+    overflow: hidden;
+    clear: left;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.markdown-region .dl-horizontal dd {
+    margin-left: 180px;
+}
+
+.markdown-region hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #FFF;
+    margin: 20px 0;
+}
+
+.markdown-region abbr[title],.markdown-region abbr[data-original-title] {
+    cursor: help;
+    border-bottom: 1px dotted #999;
+}
+
+.markdown-region abbr.initialism {
+    font-size: 90%;
+    text-transform: uppercase;
+}
+
+.markdown-region blockquote {
+    border-left: 5px solid #eee;
+    margin: 0 0 20px;
+    padding: 0 0 0 15px;
+}
+
+.markdown-region blockquote p {
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 25px;
+}
+
+.markdown-region blockquote small {
+    display: block;
+    line-height: 20px;
+    color: #999;
+}
+
+.markdown-region blockquote small:before {
+    content: "\2014 \00A0";
+}
+
+.markdown-region blockquote.pull-right {
+    float: right;
+    padding-right: 15px;
+    padding-left: 0;
+    border-right: 5px solid #eee;
+    border-left: 0;
+}
+
+.markdown-region blockquote.pull-right small:after {
+    content: "\00A0 \2014";
+}
+
+.markdown-region address {
+    display: block;
+    margin-bottom: 20px;
+    font-style: normal;
+    line-height: 20px;
+}
+
+.markdown-region code,.markdown-region pre {
+    font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+    font-size: 12px;
+    color: #333;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 0 3px 2px;
+}
+
+.markdown-region code {
+    color: #d14;
+    white-space: nowrap;
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+    padding: 2px 4px;
+}
+
+.markdown-region pre {
+    display: block;
+    font-size: 13px;
+    line-height: 20px;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    background-color: #F5F5F5;
+    border: 1px solid rgba(0,0,0,0.15);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    margin: 0 0 10px;
+    padding: 9.5px;
+}
+
+.markdown-region pre code {
+    color: inherit;
+    white-space: pre-wrap;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+}
+
+.markdown-region .pre-scrollable {
+    max-height: 340px;
+    overflow-y: scroll;
+}
+
+.markdown-region h3,.markdown-region h1 small {
+    font-size: 24.5px;
+}
+
+.markdown-region h4,.markdown-region h2 small {
+    font-size: 17.5px;
+}
+
+.markdown-region h5,.markdown-region h3 small,.markdown-region h4 small {
+    font-size: 14px;
+}
+
+.markdown-region ul ul,.markdown-region ul ol,.markdown-region ol ol,.markdown-region ol ul {
+    margin-bottom: 0;
+}
+
+.markdown-region li,.markdown-region dt,.markdown-region dd {
+    line-height: 20px;
+}
+
+.markdown-region dl,.markdown-region pre.prettyprint {
+    margin-bottom: 20px;
+}
+
+.markdown-region blockquote.pull-right p,.markdown-region blockquote.pull-right small {
+    text-align: right;
+}
+
+.markdown-region blockquote.pull-right small:before,.markdown-region q:before,.markdown-region q:after,.markdown-region blockquote:before,.markdown-region blockquote:after {
+    content: "";
+}

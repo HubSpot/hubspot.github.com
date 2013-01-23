@@ -22,6 +22,18 @@
                 addRepos(repos, page + 1);
             } else {
                 $(function(){
+                    // Remove repos whose descriptions don't contain #hubspot-open-source
+
+                    var temp_repos = [];
+
+                    $.each(repos, function(i, repo){
+                        if (/#hubspot-open-source/i.test(repo.description)) {
+                            temp_repos.push(repo);
+                        }
+                    });
+
+                    repos = temp_repos;
+
                     $('#num-repos').text(repos.length);
 
                     // Convert pushed_at to Date.

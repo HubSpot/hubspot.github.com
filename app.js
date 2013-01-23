@@ -126,8 +126,6 @@
             contents = ''
         ;
 
-        console.log("opening repo " + repo_full_name);
-
         $.getJSON(readmeURL, function (result) {
             var ghBanner;
             markdown_contents = decode64(result.data.content.substr(0, result.data.content.length - 2));

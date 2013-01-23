@@ -151,6 +151,7 @@ div.header h1 {
 #recently-updated {
     padding: 10px 0px 0px 30px;
     font-size: 14px;
+    width: 300px;
 }
 
 #recently-updated h1 a {

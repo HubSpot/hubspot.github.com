@@ -136,6 +136,7 @@
         ;
 
         $.getJSON(readmeURL, function (result) {
+            var ghBanner, $selected;
             markdown_contents = decode64(result.data.content.substr(0, result.data.content.length - 2));
             marked.setOptions({
                 gfm: true,
@@ -148,10 +149,12 @@
 
             contents = marked(markdown_contents);
 
-            var $selected = $('#selected-repo').html(contents).removeClass('hidden');
+            $selected = $('#selected-repo').html(contents).removeClass('hidden');
             $('html, body').animate({
                 scrollTop: ($selected.offset().top - 20) || 0
             }, 1000);
+            ghBanner = '<a href="https://github.com/' + repo_full_name + '"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>';
+            $('#github-banner').html(ghBanner);
         });
     }
 

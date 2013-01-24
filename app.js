@@ -70,7 +70,8 @@
                         $link = $(this);
                         $repos.removeClass('selected');
                         $link.parent().addClass('selected');
-                        openRepo($link.data('repo_full_name'));
+                        openRepo($link.attr('repo_full_name'));
+                        window.location.hash = $link.attr('repo_name');
                     });
 
                     // Sort by most-recently pushed to.
@@ -83,6 +84,14 @@
                     $.each(repos.slice(0, 3), function (i, repo) {
                         addRecentlyUpdatedRepo(repo);
                     });
+
+                    if (window.location.hash){
+                        var repoName = window.location.hash.replace('#', '');
+                        var fullRepoName = 'HubSpot/' + repoName;
+
+                        $('a[repo_full_name="' + fullRepoName + '"]').parent().addClass('selected');
+                        openRepo(fullRepoName);
+                    }
                 });
             }
         });
@@ -112,7 +121,7 @@
 
     function addRepo(repo, index) {
         var $item = $('<li>').addClass('repo grid-cell grid-item-' + (index % 4) + ' ' + (repo.language || '').toLowerCase());
-        var $link = $('<a>').data('repo_full_name', repo.full_name).attr('href', repo.html_url).appendTo($item);
+        var $link = $('<a>').attr('repo_full_name', repo.full_name).attr('repo_name', repo.name).attr('href', repo.html_url).appendTo($item);
         $link.append($('<h2>').text(repo.name));
         $link.append($('<h3>').text(repo.language));
         $link.append($('<p>').text(repo.description));
@@ -138,8 +147,11 @@
             });
 
             contents = marked(markdown_contents);
-            $('#selected-repo').html(contents).removeClass('hidden');
-            window.scrollTo(0, 0);
+
+            var $selected = $('#selected-repo').html(contents).removeClass('hidden');
+            $('html, body').animate({
+                scrollTop: ($selected.offset().top - 20) || 0
+            }, 1000);
         });
     }
 

@@ -294,4 +294,5 @@ li.repo h3 {
     border-radius: 10px;
     text-shadow: 0px 1px #fff;
     margin-bottom: 40px;
+    position: relative;
 }

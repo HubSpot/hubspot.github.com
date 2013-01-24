@@ -139,7 +139,7 @@
             });
 
             contents = marked(markdown_contents);
-            $('#selected-repo').html(contents).removeClass('hidden');
+            $('#selected-repo').html(contents).removeClass('hidden').append('<div id="github-banner"></div>');
             window.scrollTo(0, 0);
 
             ghBanner = '<a href="https://github.com/' + repo_full_name + '"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>'

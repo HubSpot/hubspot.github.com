@@ -70,7 +70,8 @@
                         $link = $(this);
                         $repos.removeClass('selected');
                         $link.parent().addClass('selected');
-                        openRepo($link.data('repo_full_name'));
+                        openRepo($link.attr('repo_full_name'));
+                        window.location.hash = $link.attr('repo_name');
                     });
 
                     // Sort by most-recently pushed to.
@@ -83,6 +84,14 @@
                     $.each(repos.slice(0, 3), function (i, repo) {
                         addRecentlyUpdatedRepo(repo);
                     });
+
+                    if (window.location.hash){
+                        var repoName = window.location.hash.replace('#', '');
+                        var fullRepoName = 'HubSpot/' + repoName;
+
+                        $('a[repo_full_name="' + fullRepoName + '"]').parent().addClass('selected');
+                        openRepo(fullRepoName);
+                    }
                 });
             }
         });
@@ -112,7 +121,7 @@
 
     function addRepo(repo, index) {
         var $item = $('<li>').addClass('repo grid-cell grid-item-' + (index % 4) + ' ' + (repo.language || '').toLowerCase());
-        var $link = $('<a>').data('repo_full_name', repo.full_name).attr('href', repo.html_url).appendTo($item);
+        var $link = $('<a>').attr('repo_full_name', repo.full_name).attr('repo_name', repo.name).attr('href', repo.html_url).appendTo($item);
         $link.append($('<h2>').text(repo.name));
         $link.append($('<h3>').text(repo.language));
         $link.append($('<p>').text(repo.description));
@@ -127,7 +136,7 @@
         ;
 
         $.getJSON(readmeURL, function (result) {
-            var ghBanner;
+            var ghBanner, $selected;
             markdown_contents = decode64(result.data.content.substr(0, result.data.content.length - 2));
             marked.setOptions({
                 gfm: true,
@@ -139,10 +148,13 @@
             });
 
             contents = marked(markdown_contents);
-            $('#selected-repo').html(contents).removeClass('hidden').append('<div id="github-banner"></div>');
-            window.scrollTo(0, 0);
 
-            ghBanner = '<a href="https://github.com/' + repo_full_name + '"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>'
+            $selected = $('#selected-repo').html(contents).removeClass('hidden');
+            $selected.append('<div id="github-banner"></div>');
+            $('html, body').animate({
+                scrollTop: ($selected.offset().top - 20) || 0
+            }, 1000);
+            ghBanner = '<a href="https://github.com/' + repo_full_name + '"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>';
             $('#github-banner').html(ghBanner);
         });
     }

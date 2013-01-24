@@ -149,12 +149,11 @@
 
             contents = marked(markdown_contents);
 
-            $selected = $('#selected-repo').html(contents).removeClass('hidden');
+            var $selectedRepo = $('#selected-repo').html(contents).removeClass('hidden');
+            $selectedRepo.append('<div id="github-banner"><a href="https://github.com/' + repo_full_name + '"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a></div>');
             $('html, body').animate({
-                scrollTop: ($selected.offset().top - 20) || 0
+                scrollTop: ($selectedRepo.offset().top - 20) || 0
             }, 1000);
-            ghBanner = '<a href="https://github.com/' + repo_full_name + '"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>';
-            $('#github-banner').html(ghBanner);
         });
     }
 

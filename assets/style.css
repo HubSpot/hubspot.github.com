@@ -296,3 +296,21 @@ li.repo h3 {
     margin-bottom: 40px;
     position: relative;
 }
+
+#members-list img {
+    height: 50px;
+    width: 50px;
+}
+
+#members-list {
+    text-align: center;
+    margin-bottom: 29px;
+}
+
+#members-list img:first-child {
+    border-radius: 7px 0px 0px 7px;
+}
+
+#members-list img:last-child {
+    border-radius: 0px 7px 7px 0px;
+}

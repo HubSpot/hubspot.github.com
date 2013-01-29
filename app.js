@@ -207,6 +207,12 @@
 
         $(function(){
             $('#num-members').text(members.length);
+
+            $.each(members, function(i, member){
+                if (member.type === 'User') {
+                    $('#members-list').append('<img src="' + member.avatar_url + '" title="' + member.login + '">');
+                }
+            });
         });
     });
 })(jQuery);

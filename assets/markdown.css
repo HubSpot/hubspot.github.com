@@ -232,3 +232,7 @@
 .markdown-region blockquote.pull-right small:before,.markdown-region q:before,.markdown-region q:after,.markdown-region blockquote:before,.markdown-region blockquote:after {
     content: "";
 }
+
+.markdown-region img {
+    max-width: 100%;
+}

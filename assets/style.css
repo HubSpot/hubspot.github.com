@@ -276,16 +276,19 @@ li.repo h3 {
 }
 
 .hero-unit {
-    margin: 40px auto 30px;
+    margin: 40px auto;
 }
 
 .hero-unit h1 {
     display: block;
     text-align: center;
     font-size: 48px;
-    font-family: "Helvetica Neue", "HelveticaNeue-Light", "Helvetica Neue Light", Helvetica, Arial, "Lucida Grande", sans-serif;
     color: #455560;
     text-shadow: none;
+    font-weight: 400;
+    line-height: 15px;
+    margin-bottom: 0px;
+    margin-top: 58px;
 }
 
 .hero-unit h2 {

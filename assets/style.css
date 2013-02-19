@@ -112,6 +112,7 @@ li.repo.selected {
 
 #repos {
     margin-bottom: 20px;
+    padding: 0px;
 }
 
 div.header {
@@ -161,8 +162,18 @@ div.header h1 {
     width: 400px;
 }
 
+#recently-updated h1 {
+    font-size: 20px;
+    margin: 0px;
+}
+
 #recently-updated h1 a {
     font-weight: normal;
+}
+
+#recently-updated-repos {
+    list-style: none;
+    padding: 0;
 }
 
 #recently-updated-repos li {

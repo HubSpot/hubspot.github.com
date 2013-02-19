@@ -83,10 +83,10 @@ div.header h1 {
 }
 
 .large-number {
+    width: 100%;
     font-size: 14px;
     font-weight: normal;
     line-height: 40px;
-    width: 250px;
     margin-right: 18px;
     padding-top: 20px;
     flaot: left;
@@ -114,7 +114,7 @@ a.large-number:link, a.large-number:visited {
 #recently-updated {
     padding: 10px 0px 0px 30px;
     font-size: 14px;
-    width: 400px;
+    width: 100%;
 }
 
 #recently-updated h1 {

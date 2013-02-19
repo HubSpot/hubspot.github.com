@@ -24,7 +24,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
         <script src="https://static.hubspotqa.com/final/js/navigation/navigation-external.js"></script>
 
-        <div class="page">
+        <div class="hs-page-width-normal">
             <div class="hero-unit">
                 <h1>HubSpot Open Source</h1>
                 <h2>If you build it, they will come.</h2>
@@ -33,20 +33,25 @@
             <div id="members-list"></div>
 
             <div class="top-section clearfix">
-                <div id="statistics">
-                    <a class="large-number" href="https://github.com/HubSpot/repositories"><span id="num-repos">&nbsp;</span> Public GitHub Repos</a>
-                    <a class="large-number" href="https://github.com/HubSpot?tab=members"><span id="num-members">&nbsp;</span> GitHub Members</a>
-                </div>
-
-                <div id="recently-updated">
-                    <h1>Recently updated &nbsp;&nbsp;<a href="https://github.com/HubSpot/repositories">View all</a></h1>
-                    <ol id="recently-updated-repos"></ol>
+                <div class="row-fluid">
+                    <div class="span3">
+                        <a class="large-number" href="https://github.com/HubSpot/repositories"><span id="num-repos">&nbsp;</span> Public GitHub Repos</a>
+                    </div>
+                    <div class="span3">
+                        <a class="large-number" href="https://github.com/HubSpot?tab=members"><span id="num-members">&nbsp;</span> GitHub Members</a>
+                    </div>
+                    <div class="span6">
+                        <div id="recently-updated">
+                            <h1>Recently updated &nbsp;&nbsp;<a href="https://github.com/HubSpot/repositories">View all</a></h1>
+                            <ol id="recently-updated-repos"></ol>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div id="selected-repo" class="hidden markdown-region"></div>
 
-            <ol id="repos" class="grid clearfix"></ol>
+            <div id="repos"></div>
         </div>
 
         <div class="hs3-public-footer">

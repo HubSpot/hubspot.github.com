@@ -63,9 +63,9 @@
                         addRepo(repo, index);
                     });
 
-                    $repos = $('#repos li.repo');
+                    $repos = $('#repos .repo');
 
-                    $('#repos li.repo > a').click(function(e){
+                    $('#repos .repo > a').click(function(e){
                         e.preventDefault();
                         $link = $(this);
                         $repos.removeClass('selected');
@@ -120,13 +120,20 @@
     }
 
     function addRepo(repo, index) {
-        var $item = $('<li>').addClass('repo grid-cell grid-item-' + (index % 4) + ' ' + (repo.language || '').toLowerCase());
+        var $row = $('<div>').addClass('row-fluid');
+        var $span = $('<div>').addClass('span3');
+        var $item = $('<div>').addClass('repo ' + (repo.language || '').toLowerCase());
         var $link = $('<a>').attr('repo_full_name', repo.full_name).attr('repo_name', repo.name).attr('href', repo.html_url).appendTo($item);
         $link.append($('<h2>').text(repo.name));
         $link.append($('<h3>').text(repo.language));
         $link.append($('<p>').text(repo.description));
         $link.append('<div class="languange-indicator" title="' + repo.language + '"></div>');
-        $item.appendTo('#repos');
+        $span.append($item);
+        if (index % 4 === 0) {
+            $('#repos').append($row);
+        }
+        $row = $('#repos .row-fluid').last();
+        $span.appendTo($row);
     }
 
     function openRepo(repo_full_name) {

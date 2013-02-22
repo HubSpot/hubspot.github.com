@@ -298,4 +298,8 @@ a.large-number:link, a.large-number:visited {
         height: auto;
         padding-bottom: 5px;
     }
+
+    #recently-updated {
+        padding-left: 0px;
+    }
 }

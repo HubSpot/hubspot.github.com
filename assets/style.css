@@ -23,6 +23,8 @@ h2 {
 
 .repo {
     display: block;
+    height: 250px;
+    position: relative;
     background: #f6f6f6;
             box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.13), 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
        -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.13), 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
@@ -159,11 +161,6 @@ a.large-number:link, a.large-number:visited {
     color: #999;
 }
 
-.repo {
-    height: 250px;
-    position: relative;
-}
-
 .repo > a {
     display: block;
     width: 100%;
@@ -293,5 +290,12 @@ a.large-number:link, a.large-number:visited {
 @media (max-width: 900px) {
     #members-list img {
         border-radius: 0px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .repo {
+        height: auto;
+        padding-bottom: 5px;
     }
 }

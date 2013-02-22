@@ -115,6 +115,10 @@ a.large-number:link, a.large-number:visited {
     padding: 10px 0px 0px 30px;
     font-size: 14px;
     width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 #recently-updated h1 {

@@ -21,26 +21,6 @@ h2 {
     border-top: 1px solid #eee;
 }
 
-.repo {
-    display: block;
-    height: 250px;
-    position: relative;
-    background: #f6f6f6;
-            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.13), 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
-       -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.13), 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
-    -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.13), 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    border-radius: 10px;
-    text-shadow: 0px 1px #fff;
-}
-
-.repo.selected {
-    background: #e0e0e0;
-            box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
-       -moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
 #main h1 {
     margin: 30px 0;
 }
@@ -105,7 +85,7 @@ a.large-number:link, a.large-number:visited {
     color: #444;
 }
 
-#num-repos, #num-members {
+.large-number #num-repos, .large-number #num-members {
     font-size: 50px;
     font-weight: normal;
     line-height: 30px;
@@ -161,59 +141,108 @@ a.large-number:link, a.large-number:visited {
     color: #999;
 }
 
-.repo > a {
+#repos.small-list {
+    margin-top: 40px;
+}
+
+.repo {
     display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    border-radius: 10px;
+    position: relative;
+    padding: 10px;
+    margin: -10px;
+    margin-bottom: 20px;
 }
 
-.repo a:hover {
-    background: #efefef;
-    background: rgba(0, 0, 0, 0.05);
+.repo:hover {
+    background: #eee;
 }
 
-.repo h2, .repo h3, .repo p {
-    margin: 10px 15px;
+.repo.selected {
+    background: #eee;
 }
 
 .repo h2 {
-    margin-bottom: 2px;
-    max-width: 160px;
+    width: 35%;
+    text-overflow: ellipsis;
     overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding-right: 20px;
+}
+
+.docs-link, .github-link {
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.repo h2, .repo h3, .repo p {
+    margin: 0;
+}
+
+.repo p {
+    position: absolute;
+    left: 35%;
+    top: 13px;
+    display: block;
+    width: 65%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding-right: 110px;
+}
+
+@media (max-width: 960px) {
+    .docs-link {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .repo p {
+        position: static;
+        width: 100%;
+        padding-right: 0;
+        white-space: pre-line;
+    }
+
+    .repo h2 {
+        width: 100%;
+        padding-right: 110px;
+    }
+
+    .docs-link, .github-link {
+        display: none;
+    }
 }
 
 .repo h3 {
-    font-size: 11px;
-    margin-top: 2px;
-    margin-bottom: 15px;
+    position: absolute;
+    top: 18px;
+    right: 36px;
     color: #999;
+    font-size: 12px;
 }
 
 .repo .languange-indicator {
     content: '';
     position: absolute;
-    right: 15px;
-    top: 15px;
+    right: 11px;
+    top: 19px;
     width: 15px;
     height: 15px;
     border-radius: 20px;
-    background-color: #3288e6;
+    background-color: #888888;
     pointer-events: none;
             box-shadow: 0px 1px #fff, inset 0px 1px 4px rgba(0, 0, 0, 0.2);
        -moz-box-shadow: 0px 1px #fff, inset 0px 1px 4px rgba(0, 0, 0, 0.2);
     -webkit-box-shadow: 0px 1px #fff, inset 0px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-.repo.javascript .languange-indicator {
-    background-color: #888888;
-}
-
-.repo.scala .languange-indicator {
-    background-color: #7ac9de;
+.repo.javascript .languange-indicator, .repo.coffeescript .languange-indicator {
+    background-color: #fe7722;
 }
 
 .repo.ruby .languange-indicator {
@@ -221,11 +250,15 @@ a.large-number:link, a.large-number:visited {
 }
 
 .repo.java .languange-indicator {
-    background-color: #fe7722;
+    background-color: #6aad2d;
 }
 
 .repo.python .languange-indicator {
-    background-color: #6aad2d;
+    background-color: #3288e6;
+}
+
+.repo.css .languange-indicator {
+    background-color: #7ac9de;
 }
 
 .repo.php .languange-indicator {
@@ -240,12 +273,11 @@ a.large-number:link, a.large-number:visited {
     display: block;
     text-align: center;
     font-size: 48px;
-    color: #455560;
     text-shadow: none;
     font-weight: 400;
     line-height: 1em;
     margin-bottom: -14px;
-    margin-top: 58px;
+    margin-top: 0px;
 }
 
 .hero-unit h2 {
@@ -268,37 +300,60 @@ a.large-number:link, a.large-number:visited {
     position: relative;
 }
 
-#members-list img {
-    height: 32px;
-    width: 32px;
-}
-
 #members-list {
+    padding-bottom: 20px;
+}
+
+#members-list h2 {
+    margin-top: 0;
+}
+
+#members-list a {
+    display: block;
+    margin-bottom: 20px;
+    width: 25%;
+    float: left;
     text-align: center;
-    margin-bottom: 29px;
-    line-height: 12px;
 }
 
-#members-list img:first-child {
-    border-radius: 7px 0px 0px 7px;
+#members-list a {
+    display: block;
+    margin-bottom: 30px;
+    width: 25%;
+    float: left;
+    text-align: center;
 }
 
-#members-list img:last-child {
-    border-radius: 0px 7px 7px 0px;
+#members-list img {
+    height: 100px;
+    width: 100px;
 }
 
-@media (max-width: 900px) {
-    #members-list img {
-        border-radius: 0px !important;
+#members-list.small-list {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#members-list.small-list a, #members-list.small-list img {
+    float: none;
+    height: 26px;
+    width: 26px;
+    margin-bottom: 0px;
+    display: inline;
+    display: inline-block;
+}
+
+#members-list.small-list h2 {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    #members-list a {
+        width: 50%
     }
 }
 
 @media (max-width: 767px) {
-    .repo {
-        height: auto;
-        padding-bottom: 5px;
-    }
-
     #recently-updated {
         padding-left: 0px;
     }

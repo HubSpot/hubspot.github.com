@@ -65,7 +65,7 @@
 
                     $repos = $('#repos .repo');
 
-                    $('#repos .repo > a').click(function(e){
+                    $('#repos .repo .links a.readmeLink').click(function(e){
                         e.preventDefault();
                         $link = $(this);
                         $repos.removeClass('selected');
@@ -120,20 +120,21 @@
     }
 
     function addRepo(repo, index) {
-        var $row = $('<div>').addClass('row-fluid');
-        var $span = $('<div>').addClass('span3');
-        var $item = $('<div>').addClass('repo ' + (repo.language || '').toLowerCase());
-        var $link = $('<a>').attr('repo_full_name', repo.full_name).attr('repo_name', repo.name).attr('href', repo.html_url).appendTo($item);
-        $link.append($('<h2>').text(repo.name));
-        $link.append($('<h3>').text(repo.language));
-        $link.append($('<p>').text(repo.description));
-        $link.append('<div class="languange-indicator" title="' + repo.language + '"></div>');
-        $span.append($item);
-        if (index % 4 === 0) {
-            $('#repos').append($row);
+        if ($('#repos').hasClass('small-list') && index > 5) {
+            return;
         }
-        $row = $('#repos .row-fluid').last();
-        $span.appendTo($row);
+        var $item = $('<div>').addClass('repo ' + (repo.language || '').toLowerCase());
+        var $links = $('<div>').addClass('links');
+        var $mainLink = $('<a>').attr('href', '/' + repo.full_name.substr('HubSpot/'.length)).text(repo.name);
+        var $docsLink = $mainLink.clone().addClass('docs-link').text('Docs');
+        var $githubLink = $('<a>').addClass('github-link').attr('repo_full_name', repo.full_name).attr('repo_name', repo.name).attr('href', repo.html_url).html('GitHub');
+        $item.append($('<h2>').append($mainLink).append($docsLink).append($githubLink));
+        $item.append($('<p>').text(repo.description.replace('#hubspot-open-source', '')));
+        if (repo.language) {
+            $item.append($('<h3>').text(repo.language));
+            $item.append('<div class="languange-indicator" title="' + repo.language + '"></div>');
+        }
+        $('#repos').append($item);
     }
 
     function openRepo(repo_full_name) {
@@ -206,7 +207,6 @@
         return unescape(output);
     }
 
-
     addRepos();
 
     $.getJSON('https://api.github.com/orgs/HubSpot/members?callback=?' + auth, function (result) {
@@ -215,9 +215,15 @@
         $(function(){
             $('#num-members').text(members.length);
 
+            members.sort(function (a, b) {
+                if (a.login.toLowerCase() < b.login.toLowerCase()) return -1;
+                if (b.login.toLowerCase() < a.login.toLowerCase()) return 1;
+                return 0;
+            });
+
             $.each(members, function(i, member){
                 if (member.type === 'User') {
-                    $('#members-list').append('<img src="' + member.avatar_url + '" title="' + member.login + '">');
+                    $('#members-list').append('<a href="http://github.com/' + member.login + '"><h2>' + member.login + '</h2><img src="' + member.avatar_url + '&s=200" title="' + member.login + '"></a>');
                 }
             });
         });

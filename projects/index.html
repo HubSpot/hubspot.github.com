@@ -15,15 +15,15 @@
         <link rel="stylesheet" href="/documentation-example/css/navigation.css">
         <link rel="stylesheet" href="/documentation-example/css/documentation.css">
 
-        <link rel="stylesheet" type="text/css" href="assets/style.css">
+        <link rel="stylesheet" type="text/css" href="../assets/style.css">
 
         <script type="text/javascript" src="//use.typekit.net/jbn8qxr.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
-        <script type="text/javascript" src="assets/strftime.js"></script>
-        <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="../assets/strftime.js"></script>
+        <script type="text/javascript" src="../app.js"></script>
     </head>
     <body>
 
@@ -67,44 +67,16 @@
                     <div class="hs-doc-sidenav">
                         <nav>
                             <ul class="hs-public-sidenav">
-                                <li class="current-nav-item"><a href="/">Home</a></li>
-                                <li><a href="/projects">Projects</a></li>
-                                <li><a href="/people">People</a></li>
+                                <li><a href="..">Home</a></li>
+                                <li class="current-nav-item"><a href>Projects</a></li>
+                                <li><a href="../people">People</a></li>
                             </ul>
                         </nav>
                     </div>
                 </div>
                 <div class="span9">
                     <div class="hs-doc-content">
-
-                        <div class="hero-unit">
-                            <h1>HubSpot Open Source</h1>
-                            <h2>If you build it, they will come.</h2>
-                        </div>
-
-                        <div id="members-list" class="small-list clearfix"></div>
-
-                        <div class="top-section clearfix">
-                            <div class="row-fluid">
-                                <div class="span3">
-                                    <a class="large-number" href="https://github.com/HubSpot/repositories"><span id="num-repos">&nbsp;</span> Public GitHub Repos</a>
-                                </div>
-                                <div class="span3">
-                                    <a class="large-number" href="https://github.com/HubSpot?tab=members"><span id="num-members">&nbsp;</span> GitHub Members</a>
-                                </div>
-                                <div class="span6">
-                                    <div id="recently-updated">
-                                        <h1>Recently updated &nbsp;&nbsp;<a href="https://github.com/HubSpot/repositories">View all</a></h1>
-                                        <ol id="recently-updated-repos"></ol>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="repos" class="small-list"></div>
-
-                        <h2><a href="projects">View all projects...</a></h2>
-
+                        <div id="repos"></div>
                     </div>
                 </div>
             </div>

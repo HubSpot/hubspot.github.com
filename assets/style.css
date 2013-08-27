@@ -115,6 +115,7 @@ a.large-number:link, a.large-number:visited {
 #recently-updated-repos {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 #recently-updated-repos li {

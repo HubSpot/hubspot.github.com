@@ -2,7 +2,8 @@
     var auth =
         location.hostname == 'hubspot.github.com' ?
             '&client_secret=e6076c603211e64d66d48c32cf280d94608ee3e1&client_id=5ee4cbe96c95a732e360' :
-            '&client_secret=1c913440a7f4a217be521afa7e21524f76b99026&client_id=956ae3b51f999e57b020'
+            '&client_secret=1c913440a7f4a217be521afa7e21524f76b99026&client_id=956ae3b51f999e57b020',
+        employeeJSONEndpoint = 'http://github.hubspot.com/static-resources/json/employee-facewall-dump-9-4-13.json'
     ;
 
     function addRepos(repos, page) {
@@ -225,6 +226,24 @@
                 if (member.type === 'User') {
                     $('#members-list').append('<a href="http://github.com/' + member.login + '"><h2>' + member.login + '</h2><img src="' + member.avatar_url + '&s=200" title="' + member.login + '"></a>');
                 }
+            });
+        });
+    });
+
+    $.getJSON(employeeJSONEndpoint, function(employeeJSON){
+        var rolesToDisplay = ['HubSpot Engineering', 'HubSpot Product'],
+            employeesToDisplay = _.filter(employeeJSON, function(employee){
+                if (_.contains(rolesToDisplay, employee.role)) return true;
+                return false;
+            })
+        ;
+
+        $(function(){
+            _.each(employeesToDisplay, function(employee){
+                var role = employee.role.replace('HubSpot ', ''),
+                    name = employee.first + ' ' + employee.last
+                ;
+                $('#full-members-list').append('<div><h2>' + name + '</h2>' + '<h3>' + role + '</h3>' + '<img src="' + employee.gravatar + '?d=https://static.hubspotqa.com/final/img/navigation/default-user-avatar-100.png&s=200" title="' + name + '" /></div>');
             });
         });
     });

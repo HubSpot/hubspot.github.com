@@ -270,9 +270,8 @@ a.large-number:link, a.large-number:visited {
 .hero-unit h1 {
     display: block;
     text-align: center;
-    font-size: 48px;
+    font-size: 30px;
     text-shadow: none;
-    font-weight: 400;
     line-height: 1em;
     margin-bottom: -14px;
     margin-top: 0px;
@@ -292,14 +291,6 @@ a.large-number:link, a.large-number:visited {
 
 #members-list h2 {
     margin-top: 0;
-}
-
-#members-list a {
-    display: block;
-    margin-bottom: 20px;
-    width: 25%;
-    float: left;
-    text-align: center;
 }
 
 #members-list a {
@@ -342,5 +333,41 @@ a.large-number:link, a.large-number:visited {
 @media (max-width: 767px) {
     #recently-updated {
         padding-left: 0px;
+    }
+}
+
+#full-members-list {
+    padding-bottom: 20px;
+}
+
+#full-members-list h2 {
+    margin: 0;
+    line-height: 1.4em;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#full-members-list h3 {
+    margin: 0 0 14px;
+    line-height: 1;
+    font-size: 13px;
+}
+
+#full-members-list div {
+    display: block;
+    margin-bottom: 30px;
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+
+#full-members-list img {
+    height: 100px;
+    width: 100px;
+}
+
+@media (max-width: 767px) {
+    #full-members-list div {
+        width: 50%
     }
 }

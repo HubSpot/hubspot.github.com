@@ -173,14 +173,6 @@ a.large-number:link, a.large-number:visited {
     margin-bottom: 20px;
 }
 
-.repo:hover {
-    background: #eee;
-}
-
-.repo.selected {
-    background: #eee;
-}
-
 .repo h2 {
     width: 35%;
     text-overflow: ellipsis;

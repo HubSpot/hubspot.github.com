@@ -1,0 +1,64 @@
+.os-icon {
+    display: inline-block;
+    height: 256px;
+    width: 256px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.os-icon.os-icon-small {
+    height: 128px;
+    width: 128px;
+}
+
+.offline-icon {
+    background-image: url("offline-icon.png");
+}
+
+.pace-icon {
+    background-image: url("pace-icon.png");
+}
+
+.vex-icon {
+    background-image: url("vex-icon.png");
+}
+
+.odometer-icon {
+    background-image: url("odometer-icon.png");
+}
+
+.signet-icon {
+    background-image: url("signet-icon.png");
+}
+
+.messenger-icon {
+    background-image: url("messenger-icon.png");
+}
+
+.bucky-icon {
+    background-image: url("bucky-icon.png");
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .offline-icon {
+        background-image: url("offline-icon@2x.png");
+    }
+    .pace-icon {
+        background-image: url("pace-icon@2x.png");
+    }
+    .vex-icon {
+        background-image: url("vex-icon@2x.png");
+    }
+    .odometer-icon {
+        background-image: url("odometer-icon@2x.png");
+    }
+    .signet-icon {
+        background-image: url("signet-icon@2x.png");
+    }
+    .messenger-icon {
+        background-image: url("messenger-icon@2x.png");
+    }
+    .bucky-icon {
+        background-image: url("bucky-icon@2x.png");
+    }
+}

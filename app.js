@@ -1,10 +1,42 @@
 (function($){
-    var auth =
+    var specialRepos,
+        auth =
         location.hostname == 'hubspot.github.com' ?
             '&client_secret=e6076c603211e64d66d48c32cf280d94608ee3e1&client_id=5ee4cbe96c95a732e360' :
             '&client_secret=1c913440a7f4a217be521afa7e21524f76b99026&client_id=956ae3b51f999e57b020',
         employeeJSONEndpoint = 'http://github.hubspot.com/static-resources/json/employee-facewall-dump-9-4-13.json'
     ;
+
+    specialRepos = {
+        offline: {
+            icon: 'offline',
+            casedTitle: 'Offline'
+        },
+        pace: {
+            icon: 'pace',
+            casedTitle: 'PACE'
+        },
+        vex: {
+            icon: 'vex',
+            casedTitle: 'Vex'
+        },
+        odometer: {
+            icon: 'odometer',
+            casedTitle: 'Odometer'
+        },
+        signet: {
+            icon: 'signet',
+            casedTitle: 'Signet'
+        },
+        messenger: {
+            icon: 'messenger',
+            casedTitle: 'Messenger'
+        }/*, (Want an even number)
+        BuckyClient: {
+            icon: 'bucky',
+            casedTitle: 'Bucky'
+        }*/
+    };
 
     function addRepos(repos, page) {
         repos = repos || [];
@@ -121,21 +153,41 @@
     }
 
     function addRepo(repo, index) {
-        if ($('#repos').hasClass('small-list') && index > 5) {
-            return;
+        var specialRepoNameLookup = repo.full_name.substr('HubSpot/'.length);
+        var specialRepo = specialRepos[specialRepoNameLookup];
+        var homepage = repo.homepage || ('/' + specialRepoNameLookup);
+        var description = repo.description.replace('#hubspot-open-source', '');
+        var stargazersString = repo.stargazers_count.toString().replace(/,/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+        if (!specialRepo) {
+            var $item = $('<div>').addClass('repo ' + (repo.language || '').toLowerCase());
+            var $links = $('<div>').addClass('links');
+            var $mainLink = $('<a class="main-link">').attr('href', homepage).text(repo.name);
+            var $docsLink = $mainLink.clone().removeClass('main-link').addClass('docs-link').text('Docs');
+            var $githubLink = $('<a>').addClass('github-link').attr('repo_full_name', repo.full_name).attr('repo_name', repo.name).attr('href', repo.html_url).html('GitHub');
+            $item.append($('<h2>').append($mainLink).append($docsLink).append($githubLink));
+            $item.append($('<p>').text(description));
+            if (repo.language) {
+                $item.append($('<h3 class="languange-text">').text(repo.language));
+                $item.append('<div class="languange-indicator" title="' + repo.language + '"></div>');
+            }
+
+            $('#repos').append($item);
+        } else {
+            var $specialRepo = $('' +
+                '<div class="special-repo">' +
+                    '<a href="' + homepage + '" class="os-icon-wrapper"><span class="os-icon os-icon-small ' + specialRepo.icon + '-icon"></span></a>' +
+                    '<div class="css special-repo-inner">' +
+                        '<h2><a href="' + homepage + '">' + specialRepo.casedTitle + '</a></h2>' +
+                        '<p>' + description + '</p>' +
+                        '<div class="special-repo-bottom">' +
+                            '<div class="stargazers"><a href="' + repo.html_url + '">GitHub &#9733; ' + stargazersString + '</a></div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '');
+            $('#special-repos').append($specialRepo);
         }
-        var $item = $('<div>').addClass('repo ' + (repo.language || '').toLowerCase());
-        var $links = $('<div>').addClass('links');
-        var $mainLink = $('<a>').attr('href', '/' + repo.full_name.substr('HubSpot/'.length)).text(repo.name);
-        var $docsLink = $mainLink.clone().addClass('docs-link').text('Docs');
-        var $githubLink = $('<a>').addClass('github-link').attr('repo_full_name', repo.full_name).attr('repo_name', repo.name).attr('href', repo.html_url).html('GitHub');
-        $item.append($('<h2>').append($mainLink).append($docsLink).append($githubLink));
-        $item.append($('<p>').text(repo.description.replace('#hubspot-open-source', '')));
-        if (repo.language) {
-            $item.append($('<h3>').text(repo.language));
-            $item.append('<div class="languange-indicator" title="' + repo.language + '"></div>');
-        }
-        $('#repos').append($item);
     }
 
     function openRepo(repo_full_name) {
@@ -226,24 +278,6 @@
                 if (member.type === 'User') {
                     $('#members-list').append('<a href="http://github.com/' + member.login + '"><h2>' + member.login + '</h2><img src="' + member.avatar_url + '&s=200" title="' + member.login + '"></a>');
                 }
-            });
-        });
-    });
-
-    $.getJSON(employeeJSONEndpoint, function(employeeJSON){
-        var rolesToDisplay = ['HubSpot Engineering', 'HubSpot Product'],
-            employeesToDisplay = _.filter(employeeJSON, function(employee){
-                if (_.contains(rolesToDisplay, employee.role)) return true;
-                return false;
-            })
-        ;
-
-        $(function(){
-            _.each(employeesToDisplay, function(employee){
-                var role = employee.role.replace('HubSpot ', ''),
-                    name = employee.first + ' ' + employee.last
-                ;
-                $('#full-members-list').append('<div><h2>' + name + '</h2>' + '<h3>' + role + '</h3>' + '<img src="' + employee.gravatar + '?d=https://static.hubspotqa.com/final/img/navigation/default-user-avatar-100.png&s=200" title="' + name + '" /></div>');
             });
         });
     });

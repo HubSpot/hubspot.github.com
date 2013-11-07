@@ -1,3 +1,7 @@
+body {
+    font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+}
+
 h2 {
     font-weight: bold;
     font-size: 20px;
@@ -14,11 +18,26 @@ h2 {
     margin: 20px auto;
 }
 
+.top-section-outer {
+    background: #eee;
+    padding-bottom: 10px;
+    margin-bottom: 60px;
+}
+
+body #hs-nav-v3 {
+    margin-bottom: 0;
+}
+
 .top-section {
     display: block;
     margin-bottom: 20px;
     padding-top: 23px;
-    border-top: 1px solid #eee;
+}
+
+@media (max-width: 767px) {
+    .top-section .span3 {
+        display: none;
+    }
 }
 
 #main h1 {
@@ -70,7 +89,7 @@ div.header h1 {
     font-weight: normal;
     line-height: 40px;
     margin-right: 18px;
-    padding-top: 20px;
+    padding-top: 30px;
     flaot: left;
     display: inline-block;
     text-align: center;
@@ -286,7 +305,16 @@ a.large-number:link, a.large-number:visited {
 }
 
 #members-list {
+    background: #eee;
+    padding-top: 40px;
     padding-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+    #members-list {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
 }
 
 #members-list h2 {
@@ -299,6 +327,14 @@ a.large-number:link, a.large-number:visited {
     width: 25%;
     float: left;
     text-align: center;
+}
+
+#members-list .hero-unit {
+    padding-bottom: 20px;
+}
+
+#members-list .hero-unit h1 {
+    font-weight: 300;
 }
 
 #members-list img {
@@ -370,4 +406,90 @@ a.large-number:link, a.large-number:visited {
     #full-members-list div {
         width: 50%
     }
+
+    .hs-doc-content-members-list {
+        margin-bottom: 0;
+    }
+}
+
+/* Special repos */
+
+.special-repos-outer {
+    padding: 40px 0;
+}
+
+.special-repos-outer .hs-page-width-normal * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#special-repos {
+    overflow: hidden;
+}
+
+.special-repo {
+    position: relative;
+    display: block;
+    float: left;
+    height: 128px;
+    margin-bottom: 40px;
+    width: 48%;
+}
+
+.special-repo:nth-child(odd) {
+    margin-right: 4%;
+}
+
+.special-repo h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.special-repo h2 + p {
+    margin: 0 0 10px;
+}
+
+@media (max-width: 960px) {
+    .special-repo, .special-repo:nth-child(odd) {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+.special-repo a {
+    color: inherit;
+}
+
+.special-repo .os-icon-wrapper {
+    position: absolute;
+    left: 0;
+    width: 128px;
+}
+
+.special-repo .special-repo-inner {
+    margin-left: 128px;
+    padding-left: 30px;
+    right: 0;
+}
+
+@media (max-width: 568px) {
+    .special-repo .os-icon-wrapper {
+        width: 64px;
+    }
+
+    .special-repo .os-icon.os-icon-small {
+        width: 64px;
+        height: 64px;
+    }
+
+    .special-repo .special-repo-inner {
+        margin-left: 64px;
+        padding-left: 20px;
+    }
+}
+
+.stargazers {
+    color: #999;
+    font-size: 13px;
 }

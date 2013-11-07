@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="/static-resources/css/documentation.css">
 
         <link rel="stylesheet" type="text/css" href="assets/style.css">
+        <link rel="stylesheet" type="text/css" href="os-icons/os-icons.css">
 
         <script type="text/javascript" src="//use.typekit.net/jbn8qxr.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -53,47 +54,17 @@
             </div>
         </div>
 
-        <div class="hs-page-width-normal">
-            <div class="row-fluid">
-                <div class="span12">
-                    <h1 class="hs-doc-page-header">HubSpot Open Source</h1>
-                </div>
-            </div>
-
-            <div class="row-fluid">
-                <div class="span3">
-                    <div class="hs-doc-sidenav">
-                        <nav>
-                            <ul class="hs-public-sidenav">
-                                <li><b>Dev &amp; Design</b></li>
-                                <li><a href="http://dev.hubspot.com">Home</a></li>
-                                <li><a href="http://dev.hubspot.com/blog">Blog</a></li>
-                                <!--li><a href="../team">Team</a></li-->
-                                <li><a href="http://dev.hubspot.com/jobs">Jobs</a></li>
-                                <li><b>Open Source</b></li>
-                                <li class="current-nav-item"><a href="/">Home</a></li>
-                                <li><a href="../projects">Projects</a></li>
-                                <li><a href="../contributors">Contributors</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="span9">
-                    <div class="hs-doc-content">
-
-                        <div class="hero-unit">
-                            <h1>If you build it, they will come.</h1>
-                        </div>
-
-                        <div id="members-list" class="small-list clearfix"></div>
-
+        <div class="top-section-outer">
+            <div class="hs-page-width-normal">
+                <div class="row-fluid">
+                    <div class="span12">
                         <div class="top-section clearfix">
                             <div class="row-fluid">
                                 <div class="span3">
-                                    <a class="large-number" href="https://github.com/HubSpot/repositories"><span id="num-repos">&nbsp;</span> Public GitHub Repos</a>
+                                    <a class="large-number" href="https://github.com/HubSpot/repositories"><span id="num-repos">&nbsp;</span> OS Projects</a>
                                 </div>
                                 <div class="span3">
-                                    <a class="large-number" href="https://github.com/HubSpot?tab=members"><span id="num-members">&nbsp;</span> GitHub Members</a>
+                                    <a class="large-number" href="https://github.com/HubSpot?tab=members"><span id="num-members">&nbsp;</span> OS Contributors</a>
                                 </div>
                                 <div class="span6">
                                     <div id="recently-updated">
@@ -103,11 +74,42 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                        <div id="repos" class="small-list"></div>
+        <div class="hero-unit">
+            <h1>Open Source Projects</h1>
+        </div>
 
-                        <h2><a href="projects">View all projects...</a></h2>
+        <div class="special-repos-outer">
+            <div class="hs-page-width-normal">
+                <div id="special-repos"></div>
+            </div>
+        </div>
 
+        <div class="hs-page-width-normal">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="hs-doc-content">
+                        <div id="repos"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="hs-page-width-normal">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="hs-doc-content hs-doc-content-members-list">
+                        <div id="members-list" class="clearfix">
+                            <div class="hero-unit">
+                                <h1>Open Source Contributors</h1>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

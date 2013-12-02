@@ -38,6 +38,9 @@
 .bucky-icon {
     background-image: url("bucky-icon.png");
 }
+.sortable-icon {
+    background-image: url("sortable-icon.png");
+}
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .offline-icon {
@@ -60,5 +63,8 @@
     }
     .bucky-icon {
         background-image: url("bucky-icon@2x.png");
+    }
+    .sortable-icon {
+        background-image: url("sortable-icon@2x.png");
     }
 }

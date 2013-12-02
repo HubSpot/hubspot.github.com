@@ -31,11 +31,15 @@
         messenger: {
             icon: 'messenger',
             casedTitle: 'Messenger'
-        }/*, (Want an even number)
+        },
         BuckyClient: {
             icon: 'bucky',
             casedTitle: 'Bucky'
-        }*/
+        },
+        sortable: {
+            icon: 'sortable',
+            casedTitle: 'Sortable'
+        }
     };
 
     function addRepos(repos, page) {

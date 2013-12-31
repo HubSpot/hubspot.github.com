@@ -39,6 +39,22 @@
         sortable: {
             icon: 'sortable',
             casedTitle: 'Sortable'
+        },
+        tether: {
+            icon: 'tether',
+            casedTitle: 'Tether'
+        },
+        drop: {
+            icon: 'drop',
+            casedTitle: 'Drop'
+        },
+        select: {
+            icon: 'select',
+            casedTitle: 'Select'
+        },
+        tooltip: {
+            icon: 'tooltip',
+            casedTitle: 'Tooltip'
         }
     };
 

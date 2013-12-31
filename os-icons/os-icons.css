@@ -35,6 +35,21 @@
 .sortable-icon {
     background-image: url("sortable-icon.png");
 }
+.tether-icon {
+    background-image: url("tether-icon.png");
+}
+.drop-icon {
+    background-image: url("drop-icon.png");
+}
+.tooltip-icon {
+    background-image: url("tooltip-icon.png");
+}
+.select-icon {
+    background-image: url("select-icon.png");
+}
+.shepherd-icon {
+    background-image: url("shepherd-icon.png");
+}
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .offline-icon {
@@ -60,5 +75,20 @@
     }
     .sortable-icon {
         background-image: url("sortable-icon@2x.png");
+    }
+    .tether-icon {
+        background-image: url("tether-icon@2x.png");
+    }
+    .drop-icon {
+        background-image: url("drop-icon@2x.png");
+    }
+    .tooltip-icon {
+        background-image: url("tooltip-icon@2x.png");
+    }
+    .select-icon {
+        background-image: url("select-icon@2x.png");
+    }
+    .shepherd-icon {
+        background-image: url("shepherd-icon@2x.png");
     }
 }

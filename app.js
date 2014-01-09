@@ -55,6 +55,10 @@
         tooltip: {
             icon: 'tooltip',
             casedTitle: 'Tooltip'
+        },
+        shepherd: {
+            icon: 'shepherd',
+            casedTitle: 'Shepherd'
         }
     };
 

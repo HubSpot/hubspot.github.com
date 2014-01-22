@@ -32,10 +32,12 @@
             icon: 'messenger',
             casedTitle: 'Messenger'
         },
+        /*
         BuckyClient: {
             icon: 'bucky',
             casedTitle: 'Bucky'
         },
+        */
         sortable: {
             icon: 'sortable',
             casedTitle: 'Sortable'

@@ -30,14 +30,18 @@ body #hs-nav-v3 {
 
 .top-section {
     display: block;
-    margin-bottom: 20px;
-    padding-top: 23px;
+    padding: 2em 0 1em;
+    -webkit-columns: 20em 3;
+    -moz-columns: 20em 3;
+    columns: 20em 3;
 }
 
-@media (max-width: 767px) {
-    .top-section .span3 {
-        display: none;
-    }
+.top-section p:first-child {
+    margin-top: 0;
+}
+
+.top-section p:last-child {
+    margin-bottom: 0;
 }
 
 #main h1 {

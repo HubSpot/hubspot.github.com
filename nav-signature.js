@@ -55,32 +55,44 @@
             $('body').addClass('nav-signature-opened');
             $('[data-nav-signature-opener]').addClass('current-nav-item');
             navSignature.$el.css('height', navSignature.$el.find('.nav-signature-wrap').height());
-            setTimeout(function(){if (!$(this).hasClass('current-nav-item')) { navSignature.$el.css('height', 'auto'); }}, 1000);
+            setTimeout(function(){if (!isOpen()) { navSignature.$el.css('height', 'auto'); }}, 1000);
             $originalActiveNavItem.removeClass('current-nav-item');
+            window.scrollTo(0, 0);
             window.location.href = navSignature.href;
         };
+
+        var isOpen = function(){
+            return $('[data-nav-signature-opener]').hasClass('current-nav-item');
+        }
 
         $('[data-nav-signature-opener]').click(function(e){
             e.preventDefault();
             e.stopPropagation();
 
-            if ($(this).hasClass('current-nav-item'))
+            if (isOpen())
                 close();
             else
                 open();
         });
 
         $('body').click(function(e){
-            if (!$(e.target).parents('.nav-signature').length && !$(e.target).parents('.widearea-overlayLayer').length && $('[data-nav-signature-opener]').hasClass('current-nav-item')) {
+            if (!$(e.target).parents('.nav-signature').length && 
+                !$(e.target).parents('.widearea-overlayLayer').length &&
+                !$(e.target).is('[data-nav-signature-opener]') &&
+                isOpen()){
                 close();
             }
         });
 
-        if (window.location.hash.substr(0, navSignature.href.length) === navSignature.href) {
-            navSignature.$el.css('height', 'auto');
-            $('[data-nav-signature-opener]').click();
-            $('body').removeClass('nav-signature-opened');
+        var maybeShow = function(){
+            if (window.location.hash.substr(0, navSignature.href.length) === navSignature.href && !isOpen()) {
+                open();
+                $('body').removeClass('nav-signature-opened');
+            }
         }
+
+        maybeShow();
+        window.addEventListener('hashchange', maybeShow);
 
         if (window.location.hash.substr(0, navSignature.thankYouHREF.length) === navSignature.thankYouHREF) {
             navSignature.$el.find(formSelector).html('<div>Thanks for your submission. You\'ll be hearing from us shortly!</div>');

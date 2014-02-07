@@ -18,6 +18,8 @@
 
     navSignature.$el = $('<div class="nav-signature"></div>');
 
+    navSignature.href = '#intern-jobs';
+
     navSignature.template =
         '<div class="nav-signature-wrap"><div class="hs-page-width-normal"><div class="row-fluid"><div class="span12"><div class="clearfix">' +
             '<h1>Open Source Interns</h1>' +
@@ -46,7 +48,6 @@
         $('[data-nav-signature-opener]').click(function(e){
             e.preventDefault();
             e.stopPropagation();
-            var href = $(this).attr('href');
             if ($(this).hasClass('current-nav-item')) {
                 $('body').removeClass('nav-signature-opened');
                 $(this).removeClass('current-nav-item');
@@ -60,7 +61,7 @@
                 navSignature.$el.css('height', navSignature.$el.find('.nav-signature-wrap').height());
                 setTimeout(function(){if ($(this).hasClass('current-nav-item')) { navSignature.$el.css('height', 'auto'); }}, 1000);
                 $originalActiveNavItem.removeClass('current-nav-item');
-                window.location.href = href;
+                window.location.href = navSignature.href;
             }
         });
 
@@ -74,6 +75,11 @@
                 $('[data-nav-signature-opener]').click();
             }
         });
+
+        if (window.location.hash === navSignature.href) {
+            navSignature.$el.css('height', 'auto');
+            $('[data-nav-signature-opener]').click();
+        }
     };
 
     $(navSignature.init);

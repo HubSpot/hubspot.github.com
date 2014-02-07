@@ -8,10 +8,10 @@
 
     var copyParagraphs = [
         'HubSpot is looking for two interns on our Open Source Infrastructure team in Boston. The open source infrastructure team is a very small group of engineers who build and maintain our open source projects for HubSpot and the community at large. You will work with us to maintain existing projects (review pull requests, close issues), and to build new libraries (including those of your own design).',
-        'What you work on will be forever immortalized on GitHub, and will be used by real developers, not shelved away. You will given as much responsibility as you can handle, and day-to-day guidance from a team with over 25k GitHub stars.',
+        'What you work on will be forever immortalized on GitHub, and will be used by real developers, not shelved away. You will be given as much responsibility as you can handle, and day-to-day guidance from a team with over 25k GitHub stars.',
         'We believe in building small, single-purpose, libraries which execute a single thing very well. We believe that it\'s by solving the thorny technical problems in isolation, that we make it possible for product to be built that solves the thorny user problems. We believe that there are limitless opportunities to build things better. We believe that it doesn\'t count if no one uses it.',
         'We don\'t build experimental projects that get shelved away. We build real software that developers use every day, around the world. We are passionate about making building software for the web easier.',
-        'If you\'re a student or recent grad with a love the frontend, please apply.'
+        'If you\'re a student or recent grad with a love for the frontend, please apply.'
     ];
 
     var navSignature = {};

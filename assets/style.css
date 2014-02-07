@@ -56,7 +56,7 @@ body #hs-nav-v3 {
 }
 
 .top-section .hubspot-signature:after {
-    content: "—HubSpot Engineering";
+    content: "—HubSpot Dev Team";
     font-family: 'La Belle Aurore', cursive;
     font-size: 25px;
     text-align: right;

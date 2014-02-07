@@ -42,29 +42,38 @@
 
         var $originalActiveNavItem = $('.current-nav-item');
 
+        var close = function(){
+            $('body').removeClass('nav-signature-opened');
+            $('[data-nav-signature-opener]').removeClass('current-nav-item');
+            navSignature.$el.css('height', navSignature.$el.find('.nav-signature-wrap').height());
+            setTimeout(function(){ navSignature.$el.css('height', 0); });
+            $originalActiveNavItem.addClass('current-nav-item');
+            window.location.href = '#0';
+        }
+
+        var open = function(){
+            $('body').addClass('nav-signature-opened');
+            $('[data-nav-signature-opener]').addClass('current-nav-item');
+            navSignature.$el.css('height', navSignature.$el.find('.nav-signature-wrap').height());
+            setTimeout(function(){if (!$(this).hasClass('current-nav-item')) { navSignature.$el.css('height', 'auto'); }}, 1000);
+            $originalActiveNavItem.removeClass('current-nav-item');
+            window.location.href = navSignature.href;
+        }
+
+
         $('[data-nav-signature-opener]').click(function(e){
             e.preventDefault();
             e.stopPropagation();
-            if ($(this).hasClass('current-nav-item')) {
-                $('body').removeClass('nav-signature-opened');
-                $(this).removeClass('current-nav-item');
-                navSignature.$el.css('height', navSignature.$el.find('.nav-signature-wrap').height());
-                setTimeout(function(){ navSignature.$el.css('height', 0); });
-                $originalActiveNavItem.addClass('current-nav-item');
-                window.location.href = '#0';
-            } else {
-                $('body').addClass('nav-signature-opened');
-                $(this).addClass('current-nav-item');
-                navSignature.$el.css('height', navSignature.$el.find('.nav-signature-wrap').height());
-                setTimeout(function(){if (!$(this).hasClass('current-nav-item')) { navSignature.$el.css('height', 'auto'); }}, 1000);
-                $originalActiveNavItem.removeClass('current-nav-item');
-                window.location.href = navSignature.href;
-            }
+
+            if ($(this).hasClass('current-nav-item'))
+                close();
+            else
+                open();
         });
 
         $('body').click(function(e){
-            if (!$(e.target).parents('.nav-signature').length && $('[data-nav-signature-opener]').hasClass('current-nav-item')) {
-                $('[data-nav-signature-opener]').click();
+            if (!$(e.target).parents('.nav-signature').length && !$(e.target).parents('.widearea-overlayLayer').length && $('[data-nav-signature-opener]').hasClass('current-nav-item')) {
+                close();
             }
         });
 
@@ -83,6 +92,20 @@
                 redirectUrl: document.location.href.split('#')[0] + navSignature.thankYouHREF,
                 target: formSelector
             });
+
+            var poll = function(){
+              var textarea = document.querySelector('textarea[name="why_are_you_the_right_person_for_the_job_"]');
+
+              if (!textarea){
+                setTimeout(poll, 250);
+                return;
+              } else {
+                textarea.setAttribute('data-widearea', 'enable');
+                wideArea();
+              }
+            };
+
+            poll()
         }
     };
 

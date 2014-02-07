@@ -1,0 +1,115 @@
+.nav-signature {
+    position: relative;
+    overflow: hidden;
+    height: 0px;
+    color: #eee;
+    -webkit-transition: height .5s ease-in-out;
+    -moz-transition: height .5s ease-in-out;
+    transition: height .5s ease-in-out;
+}
+
+.nav-signature * {
+    color: inherit;
+}
+
+.nav-signature .hs-page-width-normal * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.nav-signature .nav-signature-wrap {
+    position: relative;
+    top: 0;
+}
+
+.nav-signature .nav-signature-content {
+    padding-bottom: 60px;
+}
+
+#hs-nav-v3 .nav-signature h1 {
+    text-align: center;
+    font-size: 2em !important;
+    text-transform: uppercase;
+    font-weight: 100;
+    margin: 60px 0 2em .2em;
+    letter-spacing: .2em;
+}
+
+.nav-signature .nav-content-wrap {
+    position: relative;
+}
+
+.nav-signature .nav-signature-content {
+    width: 48%;
+}
+
+.nav-signature .nav-signature-form {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48%;
+}
+
+.nav-signature .nav-signature-form .hs-form.stacked .actions {
+    padding: 1em 0;
+    margin: 0;
+}
+
+.nav-signature .nav-signature-form .hs-form.stacked label {
+    color: inherit;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: .3em;
+    font-size: 14px;
+    margin: 0 0 4px;
+}
+
+#hs-nav-v3 .nav-signature .nav-signature-form .hs-form .hs-button,
+#hs-nav-v3 .nav-signature .nav-signature-form .hs-form .hs-button:hover,
+#hs-nav-v3 .nav-signature .nav-signature-form .hs-form .hs-button:active {
+    background-image: none;
+    box-shadow: none;
+    text-shadow: none;
+    border: 0;
+    background: #c9c9c9;
+    color: #444;
+    padding: 1em 2em;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 22px !important;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+
+#hs-nav-v3 .nav-signature .nav-signature-form input.hs-input,
+#hs-nav-v3 .nav-signature .nav-signature-form input.hs-input:focus {
+    background-image: none;
+    box-shadow: none;
+    text-shadow: none;
+    border: 0;
+    background: #202020;
+    color: #fff;
+    height: 3em;
+    padding: .5em 1em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: .03em;
+}
+
+#hs-nav-v3 .main-nav .nav-links-right > li > a[data-nav-signature-opener].current-nav-item:after {
+    display: none
+}
+
+body.nav-signature-opened > :not(#hs-nav-v3) {
+    -webkit-filter: blur(5px);
+    -webkit-transition: -webkit-filter .5s 1s;
+    -webkit-transform: translateZ(0);
+}

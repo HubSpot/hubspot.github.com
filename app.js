@@ -144,7 +144,9 @@
                         addRecentlyUpdatedRepo(repo);
                     });
 
-                    if (window.location.hash){
+                    if (window.location.hash) {
+                        return;
+
                         var repoName = window.location.hash.replace('#', '');
                         var fullRepoName = 'HubSpot/' + repoName;
 

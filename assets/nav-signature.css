@@ -135,6 +135,9 @@ body.nav-signature-opened > :not(#hs-nav-v3) {
     -webkit-transform: translateZ(0);
 }
 
+body.nav-signature-opened > .widearea-overlayLayer {
+    -webkit-filter: none;
+}
 .widearea-overlayLayer textarea {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

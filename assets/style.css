@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=La+Belle+Aurore);
+
 body {
     font-family: "proxima-nova", "Helvetica Neue", sans-serif;
 }
@@ -36,12 +38,25 @@ body #hs-nav-v3 {
     columns: 20em 3;
 }
 
+.top-section h2 {
+    margin: 0 0 -.25em;
+}
+
 .top-section p:first-child {
     margin-top: 0;
 }
 
 .top-section p:last-child {
     margin-bottom: 0;
+}
+
+.top-section .hubspot-signature:after {
+    content: "—HubSpot Engineering";
+    font-family: 'La Belle Aurore', cursive;
+    font-size: 25px;
+    text-align: right;
+    margin-bottom: -10px;
+    display: block;
 }
 
 #main h1 {

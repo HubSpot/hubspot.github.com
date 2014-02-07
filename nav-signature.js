@@ -59,7 +59,7 @@
                 $('body').addClass('nav-signature-opened');
                 $(this).addClass('current-nav-item');
                 navSignature.$el.css('height', navSignature.$el.find('.nav-signature-wrap').height());
-                setTimeout(function(){if ($(this).hasClass('current-nav-item')) { navSignature.$el.css('height', 'auto'); }}, 1000);
+                setTimeout(function(){if (!$(this).hasClass('current-nav-item')) { navSignature.$el.css('height', 'auto'); }}, 1000);
                 $originalActiveNavItem.removeClass('current-nav-item');
                 window.location.href = navSignature.href;
             }

@@ -44,11 +44,24 @@
     width: 48%;
 }
 
+@media (max-width: 768px) {
+    .nav-signature .nav-signature-content {
+        width: auto;
+    }
+}
+
 .nav-signature .nav-signature-form {
     position: absolute;
     top: 0;
     right: 0;
     width: 48%;
+}
+
+@media (max-width: 768px) {
+    .nav-signature .nav-signature-form {
+        width: auto;
+        position: static;
+    }
 }
 
 .nav-signature .nav-signature-form .hs-form.stacked .actions {

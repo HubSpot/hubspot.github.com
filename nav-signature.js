@@ -49,7 +49,7 @@
             setTimeout(function(){ navSignature.$el.css('height', 0); });
             $originalActiveNavItem.addClass('current-nav-item');
             window.location.href = '#0';
-        }
+        };
 
         var open = function(){
             $('body').addClass('nav-signature-opened');
@@ -58,8 +58,7 @@
             setTimeout(function(){if (!$(this).hasClass('current-nav-item')) { navSignature.$el.css('height', 'auto'); }}, 1000);
             $originalActiveNavItem.removeClass('current-nav-item');
             window.location.href = navSignature.href;
-        }
-
+        };
 
         $('[data-nav-signature-opener]').click(function(e){
             e.preventDefault();
@@ -94,18 +93,18 @@
             });
 
             var poll = function(){
-              var textarea = document.querySelector('textarea[name="why_are_you_the_right_person_for_the_job_"]');
+                var textarea = document.querySelector('textarea[name="why_are_you_the_right_person_for_the_job_"]');
 
-              if (!textarea){
-                setTimeout(poll, 250);
-                return;
-              } else {
-                textarea.setAttribute('data-widearea', 'enable');
-                wideArea();
-              }
+                if (!textarea){
+                    setTimeout(poll, 250);
+                    return;
+                } else {
+                    textarea.setAttribute('data-widearea', 'enable');
+                    wideArea();
+                }
             };
 
-            poll()
+            poll();
         }
     };
 

@@ -19,6 +19,7 @@
     navSignature.$el = $('<div class="nav-signature"></div>');
 
     navSignature.href = '#intern-jobs';
+    navSignature.thankYouHREF = '#intern-jobs-submitted';
 
     navSignature.template =
         '<div class="nav-signature-wrap"><div class="hs-page-width-normal"><div class="row-fluid"><div class="span12"><div class="clearfix">' +
@@ -35,13 +36,9 @@
     navSignature.init = function() {
         $('#hs-nav-v3 .hs-nav-section.main-nav').prepend(navSignature.$el);
 
-        navSignature.$el.html(navSignature.template);
+        var formSelector = '.nav-signature-form';
 
-        hbspt.forms.create({
-            portalId: '51294',
-            formId: '7e6c8151-397a-47ec-83cf-b9910b67a4aa',
-            target: '.nav-signature .nav-signature-form'
-        });
+        navSignature.$el.html(navSignature.template);
 
         var $originalActiveNavItem = $('.current-nav-item');
 
@@ -65,20 +62,28 @@
             }
         });
 
-        $('.nav-signature').click(function(e){
-            e.preventDefault();
-            e.stopPropagation();
-        });
-
-        $('body').click(function(){
-            if ($('[data-nav-signature-opener]').hasClass('current-nav-item')) {
+        $('body').click(function(e){
+            if (!$(e.target).parents('.nav-signature').length && $('[data-nav-signature-opener]').hasClass('current-nav-item')) {
                 $('[data-nav-signature-opener]').click();
             }
         });
 
-        if (window.location.hash === navSignature.href) {
+        if (window.location.hash.substr(0, navSignature.href.length) === navSignature.href) {
             navSignature.$el.css('height', 'auto');
             $('[data-nav-signature-opener]').click();
+            $('body').removeClass('nav-signature-opened');
+        }
+
+        if (window.location.hash.substr(0, navSignature.thankYouHREF.length) === navSignature.thankYouHREF) {
+            console.log(navSignature.$el.find(formSelector).length);
+            navSignature.$el.find(formSelector).html('<div>Thanks for your submission. You\'ll be hearing from us shortly!</div>');
+        } else {
+            hbspt.forms.create({
+                portalId: '51294',
+                formId: '7e6c8151-397a-47ec-83cf-b9910b67a4aa',
+                redirectUrl: document.location.href.split('#')[0] + navSignature.thankYouHREF,
+                target: formSelector
+            });
         }
     };
 

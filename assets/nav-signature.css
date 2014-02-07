@@ -99,7 +99,9 @@
 }
 
 #hs-nav-v3 .nav-signature .nav-signature-form input.hs-input,
-#hs-nav-v3 .nav-signature .nav-signature-form input.hs-input:focus {
+#hs-nav-v3 .nav-signature .nav-signature-form textarea,
+#hs-nav-v3 .nav-signature .nav-signature-form input.hs-input:focus,
+#hs-nav-v3 .nav-signature .nav-signature-form textarea:focus {
     background-image: none;
     box-shadow: none;
     text-shadow: none;
@@ -115,6 +117,11 @@
     max-width: 100%;
     -webkit-font-smoothing: antialiased;
     letter-spacing: .03em;
+}
+
+#hs-nav-v3 .nav-signature .nav-signature-form textarea,
+#hs-nav-v3 .nav-signature .nav-signature-form textarea:focus {
+    height: 5em;
 }
 
 #hs-nav-v3 .main-nav .nav-links-right > li > a[data-nav-signature-opener].current-nav-item:after {

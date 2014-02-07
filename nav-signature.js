@@ -75,7 +75,6 @@
         }
 
         if (window.location.hash.substr(0, navSignature.thankYouHREF.length) === navSignature.thankYouHREF) {
-            console.log(navSignature.$el.find(formSelector).length);
             navSignature.$el.find(formSelector).html('<div>Thanks for your submission. You\'ll be hearing from us shortly!</div>');
         } else {
             hbspt.forms.create({

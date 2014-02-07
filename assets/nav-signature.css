@@ -121,7 +121,8 @@
 
 #hs-nav-v3 .nav-signature .nav-signature-form textarea,
 #hs-nav-v3 .nav-signature .nav-signature-form textarea:focus {
-    height: 5em;
+    height: 7em;
+    resize: none;
 }
 
 #hs-nav-v3 .main-nav .nav-links-right > li > a[data-nav-signature-opener].current-nav-item:after {

@@ -14,6 +14,8 @@
         'If you have a love for the frontend and spend your time building things, please apply.'
     ];
 
+    var thanksCopy = "<p>Thanks so much for applying!  It's not always possible for us to write to every applicant, but we will be sure to get in touch if it looks like you are a good fit.</p><p>We look forward to meeting you!</p>"
+
     var navSignature = {};
 
     navSignature.$el = $('<div class="nav-signature"></div>');
@@ -85,7 +87,7 @@
         });
 
         var maybeShow = function(){
-            if (window.location.hash.substr(0, navSignature.href.length) === navSignature.href && !isOpen()) {
+            if (window.location.hash === navSignature.href && !isOpen()) {
                 open();
                 $('body').removeClass('nav-signature-opened');
             }
@@ -94,8 +96,9 @@
         maybeShow();
         window.addEventListener('hashchange', maybeShow);
 
-        if (window.location.hash.substr(0, navSignature.thankYouHREF.length) === navSignature.thankYouHREF) {
-            navSignature.$el.find(formSelector).html('<div>Thanks for your submission. You\'ll be hearing from us shortly!</div>');
+        if (window.location.hash === navSignature.thankYouHREF) {
+            open();
+            navSignature.$el.find(formSelector).html(thanksCopy);
         } else {
             hbspt.forms.create({
                 portalId: '51294',

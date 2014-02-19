@@ -79,6 +79,46 @@
     margin: 0 0 4px;
 }
 
+.nav-signature .nav-signature-form .hs-form.stacked .hs-form-radio {
+    width: 50%;
+    display: inline-block;
+    position: relative;
+    margin-top: 14px;
+}
+
+.nav-signature .nav-signature-form .hs-form.stacked .hs-form-radio label {
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+.nav-signature .nav-signature-form .hs-form.stacked .hs-form-radio input[type="radio"] {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    overflow: visible;
+}
+
+.nav-signature .nav-signature-form .hs-form.stacked .hs-form-radio input[type="radio"]:after {
+    top: 9999px;
+    left: 9999px;
+    position: absolute;
+    content: ' ';
+    width: 1.2em;
+    height: 1.2em;
+    border: 1px solid #DDD;
+    border-radius: 1px;
+    margin-top: -2px;
+    line-height: 1;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.nav-signature .nav-signature-form .hs-form.stacked .hs-form-radio input[type="radio"]:checked:after {
+    content: '\2713';
+    padding-left: 2px;
+}
 #hs-nav-v3 .nav-signature .nav-signature-form .hs-form .hs-button,
 #hs-nav-v3 .nav-signature .nav-signature-form .hs-form .hs-button:hover,
 #hs-nav-v3 .nav-signature .nav-signature-form .hs-form .hs-button:active {
@@ -123,6 +163,7 @@
 #hs-nav-v3 .nav-signature .nav-signature-form textarea:focus {
     height: 7em;
     resize: none;
+    margin-bottom: 3px;
 }
 
 #hs-nav-v3 .main-nav .nav-links-right > li > a[data-nav-signature-opener].current-nav-item:after {

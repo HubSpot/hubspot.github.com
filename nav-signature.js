@@ -1,22 +1,48 @@
 (function(){
     var $ = window.jQuery;
 
-    var render = function(_copy){
+    var formSelector = '.nav-signature-form';
+
+    var renderCopy = function(_copy){
         return '<p>' + _copy.join('</p><p>') + '</p>';
     };
-        
-    var navSignature = {
 
+    var poll = function($el){
+        var textarea = $el[0].querySelector('textarea[name="why_are_you_the_right_person_for_the_job_"]');
+
+        if (!textarea){
+            setTimeout(poll.bind(this, $el), 250);
+            return;
+        } else {
+            textarea.setAttribute('data-widearea', 'enable');
+            wideArea();
+        }
+    };
+       
+    var navSignature = {
         template: function(key){
             return '<div class="nav-signature-wrap"><div class="hs-page-width-normal"><div class="row-fluid"><div class="span12"><div class="clearfix">' +
                     '<h1>' + sigs[key].title + '</h1>' +
                     '<div class="nav-content-wrap">' +
                         '<div class="nav-signature-content">' +
-                            render(sigs[key].copy) +
+                            renderCopy(sigs[key].copy) +
                         '</div>' +
                         '<div class="nav-signature-form"></div>' +
                     '</div>' +
                 '</div></div></div></div></div>'
+        },
+
+        render: function($el, key){
+            $el.html(this.template(key));
+
+            hbspt.forms.create({
+                portalId: '51294',
+                formId: '7e6c8151-397a-47ec-83cf-b9910b67a4aa',
+                redirectUrl: document.location.href.split('#')[0] + sigs.thanks.href,
+                target: formSelector
+            });
+
+            poll($el);
         }
     };
 
@@ -59,7 +85,11 @@
         copy: [
             'Thanks so much for applying!  It\'s not always possible for us to write to every applicant, but we will be sure to get in touch if it looks like you are a good fit.',
             'We look forward to meeting you!'
-        ]
+        ],
+
+        render: function($el, key){
+            $el.html(this.template(key));
+        }
     });
 
     var $el;
@@ -79,7 +109,6 @@
         var sig = sigs[key];
         var pane;
 
-        var formSelector = '.nav-signature-form';
 
         var $link = $('a[data-nav-signature-opener][href="' + sig.href + '"]');
 
@@ -110,19 +139,6 @@
             window.location.href = '#0';
         };
 
-        var render = function(){
-            $el.html(sig.template(key));
-
-            hbspt.forms.create({
-                portalId: '51294',
-                formId: '7e6c8151-397a-47ec-83cf-b9910b67a4aa',
-                redirectUrl: document.location.href.split('#')[0] + sigs.thanks.href,
-                target: formSelector
-            });
-
-            poll();
-        };
-
         var open = function(){
             if (currentPane){
                 currentPane.reset();
@@ -130,7 +146,7 @@
 
             currentPane = pane;
 
-            render();
+            sig.render.call(sig, $el, key)
 
             navHistory.push($('.current-nav-item').first());
             $('.current-nav-item').removeClass('current-nav-item');
@@ -173,23 +189,11 @@
             return true;
         });
 
-        var poll = function(){
-            var textarea = $el[0].querySelector('textarea[name="why_are_you_the_right_person_for_the_job_"]');
-
-            if (!textarea){
-                setTimeout(poll, 250);
-                return;
-            } else {
-                textarea.setAttribute('data-widearea', 'enable');
-                wideArea();
-            }
-        };
-
         pane = {
             open: open,
             close: close,
             reset: reset,
-            render: render,
+            render: sig.render.bind(sig, $el, key),
             isOpen: _isOpen
         };
 

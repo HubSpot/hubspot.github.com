@@ -42,12 +42,12 @@
         title: 'Frontend Engineering',
 
         copy: [
-            'If you\'re a good fit, we believe HubSpot is one of the best places to be a Frontend Engineer.',
+            'We believe HubSpot is one of the best places to be a Frontend Engineer, and we\'d love a chance to tell you about why.',
             'Frontend engineers at HubSpot drive the product direction.  Along with two or three other engineers on their small team, they decide what the customer needs, what to build, and when to deploy it.  Virtually complete control is left with the individual team to make the decisions and deliver value.',
             'We deploy entirely static apps on top of our robust APIs, serving our apps directly from the CDN.  There is no middleman between the fronted developer and the data they are using.  We have a robust style guide full of reusable components, and maintain numerous open source projects we are proud of.',
             'We move quickly and without design reviews, process, or overhead.  On average, an engineer will deploy to production one to three times a day, as he or she finishes features and bug fixes.  We use feature gating, pull requests, and have a robust static versioning system to share code between projects.',
             'If you are results-driven and passionate, please get in touch.',
-            'Unfortunately, we are not currently sponsoring H1B visas, but we do have an <a href="http://international.hubspot.com/">Ireland HQ</a>.'
+            'Unfortunately, we are not currently sponsoring H1B visas, but we do have an <a href="http://international.hubspot.com/">Ireland Office</a>.'
         ]
     });
 
@@ -63,23 +63,41 @@
     });
 
     var $el;
+    var navHistory = [];
+    var panes = {};
+    var currentPane;
+
     var init = function() {
         $el = $('<div class="nav-signature"></div>');
         $('#hs-nav-v3 .hs-nav-section.main-nav').prepend($el);
+
+        for (var type in sigs)
+            initPane(type);
     }
 
-    var show = function(key) {
+    var initPane = function(key) {
         var sig = sigs[key];
+        var pane;
 
         var formSelector = '.nav-signature-form';
 
-        $el.html(sig.template(key));
+        var $link = $('a[data-nav-signature-opener][href="' + sig.href + '"]');
 
-        var $originalActiveNavItem = $('.current-nav-item');
+        var _isOpen = function(){
+            $link.hasClass('current-nav-item');
+        };
+
+        var reset = function(){
+            $('.current-nav-item').removeClass('current-nav-item');
+
+            var $lastNavItem = navHistory.pop();
+            $lastNavItem.addClass('current-nav-item');
+
+            currentPane = null;
+        };
 
         var close = function(){
-            $('body').removeClass('nav-signature-opened');
-            $('[data-nav-signature-opener]').removeClass('current-nav-item');
+            $('body').removeClass('nav-signature-opened nav-signature-opened-manually');
 
             $el.css('height', $el.find('.nav-signature-wrap').height());
 
@@ -87,34 +105,58 @@
               $el.css('height', 0);
             });
 
-            $originalActiveNavItem.addClass('current-nav-item');
+            reset();
 
             window.location.href = '#0';
         };
 
+        var render = function(){
+            $el.html(sig.template(key));
+
+            hbspt.forms.create({
+                portalId: '51294',
+                formId: '7e6c8151-397a-47ec-83cf-b9910b67a4aa',
+                redirectUrl: document.location.href.split('#')[0] + sigs.thanks.href,
+                target: formSelector
+            });
+
+            poll();
+        };
+
         var open = function(){
-            $('body').addClass('nav-signature-opened');
-            $('[data-nav-signature-opener]').addClass('current-nav-item');
+            if (currentPane){
+                currentPane.reset();
+            }
 
-            $el.css('height', $el.find('.nav-signature-wrap').height());
+            currentPane = pane;
 
-            setTimeout(function(){
-              if (!isOpen()) {
-                $el.css('height', 'auto');
-              }
-            }, 1000);
+            render();
 
-            $originalActiveNavItem.removeClass('current-nav-item');
+            navHistory.push($('.current-nav-item').first());
+            $('.current-nav-item').removeClass('current-nav-item');
+
+            $link.addClass('current-nav-item');
+
+            if (!isOpen()){
+                $('body').addClass('nav-signature-opened nav-signature-opened-manually');
+
+                $el.css('height', $el.find('.nav-signature-wrap').height());
+
+                setTimeout(function(){
+                    if (!isOpen()) {
+                        $el.css('height', 'auto');
+                    }
+                }, 1000);
+            }
 
             window.scrollTo(0, 0);
             window.location.href = sig.href;
         };
 
-        $('[data-nav-signature-opener]').click(function(e){
+        $link.click(function(e){
             e.preventDefault();
-            e.stopPropagation();
 
-            if (isOpen())
+            if (isOpen() && $link.hasClass('current-nav-item'))
                 close();
             else
                 open();
@@ -127,13 +169,8 @@
                 isOpen()){
                 close();
             }
-        });
 
-        hbspt.forms.create({
-            portalId: '51294',
-            formId: '7e6c8151-397a-47ec-83cf-b9910b67a4aa',
-            redirectUrl: document.location.href.split('#')[0] + sigs.thanks.href,
-            target: formSelector
+            return true;
         });
 
         var poll = function(){
@@ -148,13 +185,19 @@
             }
         };
 
-        poll();
+        pane = {
+            open: open,
+            close: close,
+            reset: reset,
+            render: render,
+            isOpen: _isOpen
+        };
 
-        open();
+        panes[key] = pane;
     };
 
     var isOpen = function(){
-        return $('[data-nav-signature-opener]').hasClass('current-nav-item');
+        return $('body').hasClass('nav-signature-opened');
     }
 
     var maybeShow = function(){
@@ -162,8 +205,9 @@
             var sig = sigs[type];
 
             if (window.location.hash === sig.href && !isOpen()) {
-                show(type);
-                $('body').removeClass('nav-signature-opened');
+                panes[type].open();
+                $('body').removeClass('nav-signature-opened-manually');
+                break;
             }
         }
     }

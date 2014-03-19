@@ -26,12 +26,10 @@
             icon: 'messenger',
             casedTitle: 'Messenger'
         },
-        /*
         BuckyClient: {
             icon: 'bucky',
             casedTitle: 'Bucky'
         },
-        */
         sortable: {
             icon: 'sortable',
             casedTitle: 'Sortable'
@@ -55,6 +53,10 @@
         shepherd: {
             icon: 'shepherd',
             casedTitle: 'Shepherd'
+        },
+        singularity: {
+            icon: 'singularity',
+            casedTitle: 'Singularity'
         }
     };
 

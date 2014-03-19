@@ -1,8 +1,5 @@
 (function($){
-    var specialRepos,
-        auth = '',
-        employeeJSONEndpoint = 'http://github.hubspot.com/static-resources/json/employee-facewall-dump-9-4-13.json'
-    ;
+    var specialRepos;
 
     specialRepos = {
         offline: {
@@ -68,8 +65,7 @@
         var uri = '' +
             'https://api.github.com/orgs/HubSpot/repos?callback=?' +
             '&per_page=100' +
-            '&page=' + page +
-            auth
+            '&page=' + page
         ;
 
         $.getJSON(uri, function (result) {
@@ -216,7 +212,7 @@
     }
 
     function openRepo(repo_full_name) {
-        var readmeURL = 'https://api.github.com/repos/' + repo_full_name + '/readme?callback=?' + auth,
+        var readmeURL = 'https://api.github.com/repos/' + repo_full_name + '/readme?callback=?',
             markdown_contents = '',
             contents = ''
         ;
@@ -287,7 +283,7 @@
 
     addRepos();
 
-    $.getJSON('https://api.github.com/orgs/HubSpot/members?callback=?' + auth, function (result) {
+    $.getJSON('https://api.github.com/orgs/HubSpot/members?callback=?', function (result) {
         var members = result.data;
 
         $(function(){

@@ -54,7 +54,7 @@
             icon: 'shepherd',
             casedTitle: 'Shepherd'
         },
-        singularity: {
+        Singularity: {
             icon: 'singularity',
             casedTitle: 'Singularity'
         }

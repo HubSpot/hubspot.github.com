@@ -1,9 +1,6 @@
 (function($){
     var specialRepos,
-        auth =
-        location.hostname == 'hubspot.github.com' ?
-            '&client_secret=e6076c603211e64d66d48c32cf280d94608ee3e1&client_id=5ee4cbe96c95a732e360' :
-            '&client_secret=1c913440a7f4a217be521afa7e21524f76b99026&client_id=956ae3b51f999e57b020',
+        auth = '',
         employeeJSONEndpoint = 'http://github.hubspot.com/static-resources/json/employee-facewall-dump-9-4-13.json'
     ;
 

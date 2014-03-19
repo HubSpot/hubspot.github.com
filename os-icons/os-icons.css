@@ -50,6 +50,9 @@
 .shepherd-icon {
     background-image: url("shepherd-icon.png");
 }
+.singularity-icon {
+    background-image: url("singularity-icon.png");
+}
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .offline-icon {
@@ -90,5 +93,8 @@
     }
     .shepherd-icon {
         background-image: url("shepherd-icon@2x.png");
+    }
+    .shepherd-icon {
+        background-image: url("singularity-icon@2x.png");
     }
 }

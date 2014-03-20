@@ -179,7 +179,7 @@
     letter-spacing: .02em;
 }
 
-body.nav-signature-opened-manually > :not(#hs-nav-v3) {
+body.nav-signature-opened-manually > :not(#hs-nav-v3):not(.widearea-overlayLayer) {
     -webkit-filter: blur(5px);
     -webkit-transition: -webkit-filter .5s 1s;
     -webkit-transform: translateZ(0);

@@ -57,6 +57,10 @@
         Singularity: {
             icon: 'singularity',
             casedTitle: 'Singularity'
+        },
+        'HBase-Support': {
+            icon: 'hbase-support',
+            casedTitle: 'HBase-Support'
         }
     };
 

@@ -54,6 +54,10 @@
     background-image: url("singularity-icon.png");
 }
 
+.general-store-icon {
+    background-image: url("general-store-icon.png");
+}
+
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .offline-icon {
         background-image: url("offline-icon@2x.png");
@@ -97,4 +101,8 @@
     .singularity-icon {
         background-image: url("singularity-icon@2x.png");
     }
+    .general-store-icon {
+        background-image: url("general-store-icon@2x.png");
+    }
+
 }

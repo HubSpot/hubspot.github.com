@@ -61,6 +61,10 @@
         'HBase-Support': {
             icon: 'hbase-support',
             casedTitle: 'HBase-Support'
+        },
+        'general-store': {
+          icon: 'general-store',
+          casedTitle: 'General Store'
         }
     };
 

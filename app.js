@@ -68,97 +68,81 @@
         }
     };
 
-    function addRepos(repos, page) {
+    function addRepos(repos) {
         repos = repos || [];
-        page = page || 1;
 
-        var uri = '' +
-            'https://api.github.com/orgs/HubSpot/repos?callback=?' +
-            '&per_page=100' +
-            '&page=' + page
-        ;
+        // Remove repos whose descriptions don't contain #hubspot-open-source
 
-        $.getJSON(uri, function (result) {
-            if (result.data && result.data.length > 0) {
-                repos = repos.concat(result.data);
-                addRepos(repos, page + 1);
-            } else {
-                $(function(){
-                    // Remove repos whose descriptions don't contain #hubspot-open-source
+        var temp_repos = [];
 
-                    var temp_repos = [];
-
-                    $.each(repos, function(i, repo){
-                        if (/#hubspot-open-source/i.test(repo.description)) {
-                            temp_repos.push(repo);
-                        }
-                    });
-
-                    repos = temp_repos;
-
-                    $('#num-repos').text(repos.length);
-
-                    // Convert pushed_at to Date.
-                    $.each(repos, function (i, repo) {
-                        repo.pushed_at = new Date(repo.pushed_at);
-
-                        var weekHalfLife  = 1.146 * Math.pow(10, -9);
-
-                        var pushDelta = (+new Date()) - Date.parse(repo.pushed_at);
-                        var createdDelta = (+new Date()) - Date.parse(repo.created_at);
-
-                        var weightForPush = 1;
-                        var weightForWatchers = 1.314 * Math.pow(10, 7);
-
-                        repo.hotness = weightForPush * Math.pow(Math.E, -1 * weekHalfLife * pushDelta);
-                        repo.hotness += weightForWatchers * repo.watchers / createdDelta;
-                    });
-
-                    // Sort by highest # of watchers.
-                    repos.sort(function (a, b) {
-                        if (a.hotness < b.hotness) return 1;
-                        if (b.hotness < a.hotness) return -1;
-                        return 0;
-                    });
-
-                    $.each(repos, function (index, repo) {
-                        addRepo(repo, index);
-                    });
-
-                    $repos = $('#repos .repo');
-
-                    $('#repos .repo .links a.readmeLink').click(function(e){
-                        e.preventDefault();
-                        $link = $(this);
-                        $repos.removeClass('selected');
-                        $link.parent().addClass('selected');
-                        openRepo($link.attr('repo_full_name'));
-                        window.location.hash = $link.attr('repo_name');
-                    });
-
-                    // Sort by most-recently pushed to.
-                    repos.sort(function (a, b) {
-                        if (a.pushed_at < b.pushed_at) return 1;
-                        if (b.pushed_at < a.pushed_at) return -1;
-                        return 0;
-                    });
-
-                    $.each(repos.slice(0, 3), function (i, repo) {
-                        addRecentlyUpdatedRepo(repo);
-                    });
-
-                    if (window.location.hash) {
-                        return;
-
-                        var repoName = window.location.hash.replace('#', '');
-                        var fullRepoName = 'HubSpot/' + repoName;
-
-                        $('a[repo_full_name="' + fullRepoName + '"]').parent().addClass('selected');
-                        openRepo(fullRepoName);
-                    }
-                });
+        $.each(repos, function(i, repo){
+            if (/#hubspot-open-source/i.test(repo.description)) {
+                temp_repos.push(repo);
             }
         });
+
+        repos = temp_repos;
+
+        $('#num-repos').text(repos.length);
+
+        // Convert pushed_at to Date.
+        $.each(repos, function (i, repo) {
+            repo.pushed_at = new Date(repo.pushed_at);
+
+            var weekHalfLife  = 1.146 * Math.pow(10, -9);
+
+            var pushDelta = (+new Date()) - Date.parse(repo.pushed_at);
+            var createdDelta = (+new Date()) - Date.parse(repo.created_at);
+
+            var weightForPush = 1;
+            var weightForWatchers = 1.314 * Math.pow(10, 7);
+
+            repo.hotness = weightForPush * Math.pow(Math.E, -1 * weekHalfLife * pushDelta);
+            repo.hotness += weightForWatchers * repo.watchers / createdDelta;
+        });
+
+        // Sort by highest # of watchers.
+        repos.sort(function (a, b) {
+            if (a.hotness < b.hotness) return 1;
+            if (b.hotness < a.hotness) return -1;
+            return 0;
+        });
+
+        $.each(repos, function (index, repo) {
+            addRepo(repo, index);
+        });
+
+        $repos = $('#repos .repo');
+
+        $('#repos .repo .links a.readmeLink').click(function(e){
+            e.preventDefault();
+            $link = $(this);
+            $repos.removeClass('selected');
+            $link.parent().addClass('selected');
+            openRepo($link.attr('repo_full_name'));
+            window.location.hash = $link.attr('repo_name');
+        });
+
+        // Sort by most-recently pushed to.
+        repos.sort(function (a, b) {
+            if (a.pushed_at < b.pushed_at) return 1;
+            if (b.pushed_at < a.pushed_at) return -1;
+            return 0;
+        });
+
+        $.each(repos.slice(0, 3), function (i, repo) {
+            addRecentlyUpdatedRepo(repo);
+        });
+
+        if (window.location.hash) {
+            return;
+
+            var repoName = window.location.hash.replace('#', '');
+            var fullRepoName = 'HubSpot/' + repoName;
+
+            $('a[repo_full_name="' + fullRepoName + '"]').parent().addClass('selected');
+            openRepo(fullRepoName);
+        }
     }
 
     function addRecentlyUpdatedRepo(repo) {
@@ -291,10 +275,7 @@
         return unescape(output);
     }
 
-    addRepos();
-
-    $.getJSON('https://api.github.com/orgs/HubSpot/members?callback=?', function (result) {
-        var members = result.data;
+    function addMembers(members) {
 
         $(function(){
             $('#num-members').text(members.length);
@@ -311,5 +292,13 @@
                 }
             });
         });
-    });
+    }
+
+    // For JSONP fromhttp://static.hsappstatic.net/hubspotdev-github-data-cache/ex/hubspot-filtered-org-data.json
+    window.githubFilteredOrgDataCallback = function(data) {
+        $(function() {
+            addRepos(data.repos);
+            addMembers(data.members);
+        });
+    };
 })(jQuery);

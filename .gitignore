@@ -1,3 +1,4 @@
 *.sass-cache
 *.scssc
 *.DS_Store
+_site/

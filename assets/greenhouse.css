@@ -1,0 +1,26 @@
+#app_body #header {
+  border-left: 3px solid #FFCFAF;
+  padding-left: 24px;
+}
+
+#app_body h1 {
+    margin-bottom: 0px;
+    font-size: 40px;
+    font-family: "Helvetica Neue";
+    color: #444;
+    font-weight: 300;}
+
+ #app_body #header .company-name {display:none;}
+
+ #app_body #header .location {
+    color: #7C7C7C;
+    margin: 8px 0px;
+    font-size: 18px;}
+
+
+ #app_body #content {
+    padding: 40px 0px 60px 0px;
+    color: #797979;
+    font-size: 15px;
+    line-height: 1.6;
+  }

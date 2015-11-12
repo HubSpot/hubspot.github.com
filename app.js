@@ -298,7 +298,9 @@
     window.githubFilteredOrgDataCallback = function(data) {
         $(function() {
             addRepos(data.repos);
-            addMembers(data.members);
+            
+            // Removed contributors
+            // addMembers(data.members);  
         });
     };
 })(jQuery);

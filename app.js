@@ -2,14 +2,6 @@
     var specialRepos;
 
     specialRepos = {
-        offline: {
-            icon: 'offline',
-            casedTitle: 'Offline'
-        },
-        pace: {
-            icon: 'pace',
-            casedTitle: 'PACE'
-        },
         vex: {
             icon: 'vex',
             casedTitle: 'Vex'
@@ -18,21 +10,9 @@
             icon: 'odometer',
             casedTitle: 'Odometer'
         },
-        signet: {
-            icon: 'signet',
-            casedTitle: 'Signet'
-        },
         messenger: {
             icon: 'messenger',
             casedTitle: 'Messenger'
-        },
-        BuckyClient: {
-            icon: 'bucky',
-            casedTitle: 'Bucky'
-        },
-        sortable: {
-            icon: 'sortable',
-            casedTitle: 'Sortable'
         },
         tether: {
             icon: 'tether',
@@ -57,10 +37,6 @@
         Singularity: {
             icon: 'singularity',
             casedTitle: 'Singularity'
-        },
-        'HBase-Support': {
-            icon: 'hbase-support',
-            casedTitle: 'HBase-Support'
         },
         'general-store': {
           icon: 'general-store',
@@ -298,9 +274,9 @@
     window.githubFilteredOrgDataCallback = function(data) {
         $(function() {
             addRepos(data.repos);
-            
+
             // Removed contributors
-            // addMembers(data.members);  
+            // addMembers(data.members);
         });
     };
 })(jQuery);

@@ -18,7 +18,7 @@
             wideArea();
         }
     };
-       
+
     var navSignature = {
         template: function(key){
             return '<div class="nav-signature-wrap"><div class="hs-page-width-normal"><div class="row-fluid"><div class="span12"><div class="clearfix">' +
@@ -73,7 +73,7 @@
             'We deploy entirely static apps on top of our robust APIs, serving our apps directly from the CDN.  There is no middleman between the fronted developer and the data they are using.  We have a robust style guide full of reusable components, and maintain numerous open source projects we are proud of.',
             'We move quickly and without design reviews, process, or overhead.  On average, an engineer will deploy to production one to three times a day, as he or she finishes features and bug fixes.  We use feature gating, pull requests, and have a robust static versioning system to share code between projects.',
             'If you are results-driven and passionate, please get in touch.',
-            'Unfortunately, we are not currently sponsoring H1B visas, but we do have an <a href="http://international.hubspot.com/">Ireland Office</a>.'
+            'Unfortunately, we are not currently sponsoring H1B visas, but we do have an <a href="https://international.hubspot.com/">Ireland Office</a>.'
         ]
     });
 
@@ -179,7 +179,7 @@
         });
 
         $('body').click(function(e){
-            if (!$(e.target).parents('.nav-signature').length && 
+            if (!$(e.target).parents('.nav-signature').length &&
                 !$(e.target).parents('.widearea-overlayLayer').length &&
                 !$(e.target).is('[data-nav-signature-opener]') &&
                 isOpen()){
